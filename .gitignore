@@ -1,0 +1,8 @@
+catkin_ws/build/
+catkin_ws/devel/
+catkin_ws/src/cluster/src/.vscode/browse.vc.db
+catkin_ws/src/cluster/src/.vscode/c_cpp_properties.json
+catkin_ws/src/cluster/src/.vscode/settings.json
+catkin_ws/src/pcdCreate/.vscode/browse.vc.db
+catkin_ws/src/pcdCreate/.vscode/c_cpp_properties.json
+catkin_ws/src/pcdCreate/.vscode/settings.json
