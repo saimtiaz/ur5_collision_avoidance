@@ -4,3 +4,7 @@
 [submodule "relaxed_ik_ros1"]
 	path = relaxed_ik_ros1
 	url = https://github.com/uwgraphics/relaxed_ik_ros1.git
+[submodule "universal_robot"]
+	path = universal_robot
+	url = https://github.com/ros-industrial/universal_robot.git
+	branch = melodic-devel
