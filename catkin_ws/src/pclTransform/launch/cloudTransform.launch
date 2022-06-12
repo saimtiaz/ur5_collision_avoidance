@@ -1,0 +1,14 @@
+<launch>
+  <node name="cloud_transformer"
+        pkg="pclTransform" type="cloud_transformer" output="screen">
+    <remap from="/inputPC" to="/camera/depth_registered/points" />
+    <remap from="/outputPC" to="/croppedPointCloud" />
+    <param name="frameIn" type="str" value="camera_depth_frame" />
+    <param name="frameOut" type="str" value="base_link" />
+  </node> 
+  <node name="dummy_handeye" pkg="tf" type="static_transform_publisher"
+            args="-0.15122919502 -1.33268123562 0.382354381499 -0.138836537909 0.0784394799313 0.691963622156 0.704100851685 base_link camera_link 10" />
+</launch>
+
+
+
