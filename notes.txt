@@ -1,0 +1,49 @@
+LAUNCH NOTES
+
+--------------------
+Turning on the UR5
+--------------------
+roslaunch ur_calibration calibration_correction.launch \
+  robot_ip:=<robot_ip> target_filename:="${HOME}/.ros/robot_calibration.yaml"
+roslaunch ur_robot_driver ur5_bringup.launch robot_ip:=<robot_ip> \
+  kinematics_config:="${HOME}/.ros/robot_calibration.yaml"
+
+--------------------
+Turning on the camera
+--------------------
+roslaunch realsense2_camera rs_rgbd.launch
+
+
+--------------------
+Creating point cloud
+--------------------
+roslaunch pclTransform cloudTransform.launch
+	+ Needs UR5 on
+	+ Needs camera on
+	+ Configure cloudTransform.launch for frameIn/Out
+		and camera topic are correct
+	+ Make sure calibration parameters have been updated correctly
+rosrun pcdCreate pcdCreator
+	+ Make sure file name is set
+
+
+--------------------
+Calibration
+--------------------
+roslaunch ur_robot_driver ur5_bringup.launch robot_ip:=<robot_ip>
+roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch
+roslaunch realsense2_camera rs_rgbd.launch
+roslaunch easy_handeye ur5_realsense_handeyecalibration.launch eye_on_hand:=<true or false>
+
+
+
+--------------------
+Creating clusters
+--------------------
+
+
+
+
+
+CLONING MY PROJECT
+git clone --recurse-submodules https://github.com/chaconinc/MainProject
