@@ -20,7 +20,6 @@
 #include <pcl/ModelCoefficients.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/filters/extract_indices.h>
-#include <pcl/filters/voxel_grid.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/search/kdtree.h>
 #include <pcl/sample_consensus/method_types.h>
@@ -41,7 +40,6 @@
 
 
 #include <vector>
-#include <ros/ros.h>
 #include <pcl/conversions.h>
 #include <pcl/PCLHeader.h>
 #include <std_msgs/Header.h>
@@ -50,10 +48,9 @@
 #include <pcl/PCLPointField.h>
 #include <sensor_msgs/PointField.h>
 #include <pcl/PCLPointCloud2.h>
-#include <sensor_msgs/PointCloud2.h>
 #include <pcl/PointIndices.h>
 #include <pcl_msgs/PointIndices.h>
-#include <pcl/ModelCoefficients.h>
+
 #include <pcl_msgs/ModelCoefficients.h>
 #include <pcl/Vertices.h>
 #include <pcl_msgs/Vertices.h>
@@ -86,16 +83,31 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
 
     if(getNextScan == true)
     {
-		ROS_INFO_STREAM("TAKING SCAN");
-		pcl::PCLPointCloud2 pcl_pc2;
-    	pcl_conversions::toPCL(*cloud_msg,pcl_pc2);
-    	pcl::PointCloud<pcl::PointXYZ>::Ptr temp_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    	pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
-		getNextScan = false;
-		std::string fileName="scan" + std::to_string(scanCount) + ".pcd"; 
-		pcl::io::savePCDFileASCII (fileName, *temp_cloud);
-		ROS_INFO_STREAM("SCAN COMPLETE");
-		scanCount = scanCount + 1;
+      ROS_INFO_STREAM("TAKING SCAN");
+      getNextScan = false;
+
+      //Read in cloud data
+      pcl::PCLPointCloud2 pcl_pc2;
+      pcl_conversions::toPCL(*cloud_msg,pcl_pc2);
+      pcl::PointCloud<pcl::PointXYZ>::Ptr temp_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+      pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
+      
+      //Create file name
+      std::string fileName="scan" + std::to_string(scanCount) + ".pcd"; 
+
+      //Downsample the dataset using a leaf size of 1cm
+      // pcl::VoxelGrid<pcl::PointXYZ> vg;
+      // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
+      // vg.setInputCloud (cloud);
+      // vg.setLeafSize (0.01f, 0.01f, 0.01f);
+      // vg.filter (*cloud_filtered);
+
+      //Save file
+      // pcl::io::savePCDFileASCII (fileName, *cloud_filtered); 
+      pcl::io::savePCDFileASCII (fileName, *temp_cloud);
+
+      ROS_INFO_STREAM("SCAN COMPLETE");
+      scanCount = scanCount + 1;
     }
 }
 
