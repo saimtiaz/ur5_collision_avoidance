@@ -15,7 +15,6 @@ import math as M
 import sys
 import rospy
 import signal
-from relaxed_ik_ros1.msg import JointAngles
 from std_msgs.msg import Bool
 
 HOST = '10.130.229.165'
@@ -30,35 +29,14 @@ POSITIONS = [
 ]
 OFFSET = [-M.pi, -M.pi / 2, 0, -M.pi / 2, 0, M.pi / 4]
 
-#TODO publish out to get next scan
-SCAN_TOPIC = "/getNextScan";
-
 quit_pub = rospy.Publisher('/quitScan', Bool, queue_size=5)
 scan_pub = rospy.Publisher('/getNextScan', Bool, queue_size=5)
-
-
-# class JointAnglesHandler():
-#     def __init__(self):
-#         self.ja_sub = rospy.Subscriber(
-#             '/relaxed_ik/joint_angle_solutions', JointAngles, self.get_ja)
-#         self.ja_solution = ''
-
-#     def get_ja(self, data):
-#         self.ja_solution = []
-#         for a in data.angles.data:
-#             self.ja_solution.append(a)
-
-
-# def signal_handler(signal, frame):
-#     sys.exit()
-
 
 if __name__ == '__main__':
     #Connect to the UR5 via socket
     print('initialized')
     rospy.init_node('moveScan_ur5', anonymous=True)
     print('node initialized')
-    # ja_handler = JointAnglesHandler()
     print('attempting to connect')
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print('connecting to robot...')
