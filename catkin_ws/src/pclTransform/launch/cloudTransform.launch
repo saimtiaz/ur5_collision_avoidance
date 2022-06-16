@@ -6,7 +6,7 @@
     <param name="frameIn" type="str" value="camera_depth_frame" />
     <param name="frameOut" type="str" value="virtual_base_link" />
   </node> 
-  <node name="dummy_handeye" pkg="tf" type="static_transform_publisher"
+  <node name="calibrationTransform" pkg="tf" type="static_transform_publisher"
             args="-0.0780115645347 -0.0268988427259 0.215727025566 0.276186511322 -0.656277142974 0.280620497132 0.643640784261 tool0 camera_link 10" />
   <node name="virtual_base" pkg="tf" type="static_transform_publisher"
             args="0.0 0.0 0.0 0.0 0.0 1.0 0.0 base_link virtual_base_link 10" />
