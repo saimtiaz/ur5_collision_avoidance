@@ -62,13 +62,19 @@
 #include <pcl/io/pcd_io.h>
 #include <Eigen/StdVector>
 #include <Eigen/Geometry>
- // Topics
- //static const std::string IMAGE_TOPIC = "camera/depth/color/points";
-//static const std::string IMAGE_TOPIC = "/camera/depth_registered/points";
-static const std::string IMAGE_TOPIC = "/croppedPointCloud";
 
-static float callbackCount = 0;
-static pcl::PCLPointCloud2* finalCloud = new pcl::PCLPointCloud2;
+#include <iostream>
+#include "std_msgs/Bool.h"
+
+// Topics
+static const std::string IMAGE_TOPIC = "/croppedPointCloud";
+static const std::string SCAN_TOPIC = "/getNextScan";
+static const std::string QUIT_TOPIC = "/quitScan";
+
+
+bool getNextScan = true;
+static float scanCount = 0;
+//static pcl::PCLPointCloud2* finalCloud = new pcl::PCLPointCloud2;
 
  // ROS Publisher
  ros::Publisher pub;
@@ -76,19 +82,40 @@ static pcl::PCLPointCloud2* finalCloud = new pcl::PCLPointCloud2;
 
 void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
 {
-    callbackCount = callbackCount + 1;
     ROS_INFO_STREAM("IN callback " << ros::this_node::getName());
 
-    pcl::PCLPointCloud2 pcl_pc2;
-    pcl_conversions::toPCL(*cloud_msg,pcl_pc2);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr temp_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
-    if(callbackCount < 2)
+    if(getNextScan == true)
     {
-        pcl::io::savePCDFileASCII ("test_pcd.pcd", *temp_cloud);
+		ROS_INFO_STREAM("TAKING SCAN");
+		pcl::PCLPointCloud2 pcl_pc2;
+    	pcl_conversions::toPCL(*cloud_msg,pcl_pc2);
+    	pcl::PointCloud<pcl::PointXYZ>::Ptr temp_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+    	pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
+		getNextScan = false;
+		std::string fileName="scan" + std::to_string(scanCount) + ".pcd"; 
+		pcl::io::savePCDFileASCII (fileName, *temp_cloud);
+		ROS_INFO_STREAM("SCAN COMPLETE");
+		scanCount = scanCount + 1;
     }
 }
 
+void nextScan_cb(const std_msgs::Bool::ConstPtr& nextScan_msg)
+{
+    ROS_INFO_STREAM("In nextScan_cb " << nextScan_msg->data);
+    if(getNextScan == false && nextScan_msg->data)
+    {
+    	getNextScan = true;
+    }
+    
+}
+
+void quit_cb(const std_msgs::Bool::ConstPtr& quit_msg)
+{
+    if(quit_msg->data == true)
+    {
+    	ros::shutdown();
+    }
+}
 
 
 // Main function
@@ -105,7 +132,11 @@ int main(int argc, char** argv)
 
 
   // Create a ROS Subscriber to IMAGE_TOPIC with a queue_size of 1 and a callback function to cloud_cb
-  ros::Subscriber sub = nh.subscribe(IMAGE_TOPIC, 1, cloud_cb);
+  ros::Subscriber cloudSub = nh.subscribe(IMAGE_TOPIC, 1, cloud_cb);
+
+  ros::Subscriber nextScanSub = nh.subscribe(SCAN_TOPIC, 1, nextScan_cb);
+
+  ros::Subscriber quitSub = nh.subscribe(QUIT_TOPIC, 1, quit_cb);
 
 
   ros::spin();

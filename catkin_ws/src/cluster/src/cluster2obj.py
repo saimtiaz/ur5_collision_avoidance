@@ -250,7 +250,14 @@ def rotateCluster(cluster):
     #return cluster
 
 
+def addCluster(fullCluster, cluster):
 
+    xS = fullCluster[0] + cluster[0]
+    yS = fullCluster[1] + cluster[1]
+    zS = fullCluster[2] + cluster[2]
+
+    newFullCluster = [xS, yS, zS]
+    return newFullCluster
 
 
 
@@ -258,14 +265,27 @@ if __name__ == "__main__":
     pointCloudDir = '/home/simtiaz/catkin_ws/theOne/'
     fileList = os.listdir(pointCloudDir)
     objList = []
-    for file in fileList:
-        if (file.endswith(".pcd")):
-            fullFileName = os.path.join(pointCloudDir, file)
-            cluster = pcd2cluster(fullFileName)
-            rotCluster = rotateCluster(cluster)
-            kObjects = cluster2objKMEANS(rotCluster)
-            #obj = cluster2obj(cluster)
-            for object in kObjects:
-                objList.append(object)
+    fullScan = True
+    if fullScan:
+        megaCluster = [[], [], []]
+        for file in fileList:
+            if (file.endswith(".pcd")):
+                fullFileName = os.path.join(pointCloudDir, file)
+                cluster = pcd2cluster(fullFileName)
+                megaCluster = addCluster(megaCluster, cluster)
+        kObjects = cluster2objKMEANS(megaCluster)
+        #obj = cluster2obj(cluster)
+        for object in kObjects:
+            objList.append(object)
+    else:
+        for file in fileList:
+            if (file.endswith(".pcd")):
+                fullFileName = os.path.join(pointCloudDir, file)
+                cluster = pcd2cluster(fullFileName)
+                #rotCluster = rotateCluster(cluster)
+                kObjects = cluster2objKMEANS(cluster)
+                #obj = cluster2obj(cluster)
+                for object in kObjects:
+                    objList.append(object)
     
     objWriter(objList)
