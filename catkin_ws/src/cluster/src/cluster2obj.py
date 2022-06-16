@@ -259,9 +259,32 @@ def addCluster(fullCluster, cluster):
     newFullCluster = [xS, yS, zS]
     return newFullCluster
 
+def filterCluster(rawCluster, leafSize):
+    filteredX = [round(((round(x/leafSize)) * leafSize), 3) for x in rawCluster[0]]
+    filteredY = [round(((round(y/leafSize)) * leafSize), 3) for y in rawCluster[1]]
+    filteredZ = [round(((round(z/leafSize)) * leafSize), 3) for z in rawCluster[2]]
+    
+    filteredTuples = list(zip(filteredX, filteredY, filteredZ))
+    filteredTuples = removeDuplicates(filteredTuples)
+
+    xS = [x[0] for x in filteredTuples]
+    yS = [x[1] for x in filteredTuples]
+    zS = [x[2] for x in filteredTuples]
+
+    #Convert tuples back to list
+    filterCluster = [xS, yS, zS]
+    return filterCluster
+
+def removeDuplicates(lst):
+      
+    return list(set([i for i in lst]))
+
 
 
 if __name__ == "__main__":
+
+    #filteredCluster = filterCluster(cluster, 0.1)
+
     pointCloudDir = '/home/simtiaz/catkin_ws/theOne/'
     fileList = os.listdir(pointCloudDir)
     objList = []
@@ -273,8 +296,8 @@ if __name__ == "__main__":
                 fullFileName = os.path.join(pointCloudDir, file)
                 cluster = pcd2cluster(fullFileName)
                 megaCluster = addCluster(megaCluster, cluster)
+        filteredCluster = filterCluster(megaCluster)
         kObjects = cluster2objKMEANS(megaCluster)
-        #obj = cluster2obj(cluster)
         for object in kObjects:
             objList.append(object)
     else:
