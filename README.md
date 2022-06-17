@@ -51,5 +51,9 @@ End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a R
     9 - rotate chain 2 around -Y
     8 - rotate chain 2 around +Z
     7 - rotate chain 2 around -Z
-    ```
+```
+
+## Existing Issues
+
+## Future Directions
 
