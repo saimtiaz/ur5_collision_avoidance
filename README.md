@@ -11,7 +11,16 @@ End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a R
 
 ### UR5 IP Address
 
+TODO: Make this information more clear by actually checking this on the robot
+The UR5 IP Address can be obtained by starting up the UR5 from the control panel and navigating to the about information
+
 ### Turning on the camera
+
+1. Navigate and source to ur5_ws:
+    1. Run the following command to begin publishing camera data:
+        ```bash
+        roslaunch realsense2_camera rs_rgbd.launch
+        ```
 
 ## Calibration
 
@@ -22,6 +31,7 @@ End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a R
 ## Cluster to Collision Object Extraction
 
 ## Robot Movement with CollisionIK
+
 1. Navigate to catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/info_files/ur5_info.yaml
 1. Make sure 'starting_config' is set the same as 'STARTING_CONFIG' in ur5_ws/src/mover/src/mover.py 
 
