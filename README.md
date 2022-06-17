@@ -67,11 +67,22 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 	1. x y z qx qy qz qw
 
 ## Point Cloud Scan
+1. IN DEVELOPMENT
 
 ## Point Cloud Cluster Extraction
+1. IN DEVELOPMENT
 
 ## Cluster to Collision Object Extraction
+1. This section will convert point cloud data into collision objects that are usable by CollisionIK
+1. This code will automatically populate CollisionIK with the collision objects
 
+
+1. Navigate and source to catkin_ws:
+	1. Launch the cluster to collision object script:
+        ```bash
+    	rosrun cluster cluster2obj.py
+        ```
+    
 ## Robot Movement with CollisionIK
 
 1. Navigate to catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/info_files/ur5_info.yaml
