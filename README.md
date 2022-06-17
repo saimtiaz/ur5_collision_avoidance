@@ -4,6 +4,11 @@
 
 End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a RealSense D435 Camera to detect and avoid obstacles. This project includes everything from calibration, point cloud processing, object detection, UR5 movement, and collision avoidance.
 
+### Use Case
+
+### Demo
+
+### Paper
 
 ## Installation Instructions
 
@@ -70,11 +75,19 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 1. IN DEVELOPMENT
 
 ## Point Cloud Cluster Extraction
-1. IN DEVELOPMENT
+This section will utilize Euclidean clustering to decompose the point cloud into clusters and planar objects
+This is optional as k-means clustering should be sufficient
+Please note this instruction set is incomplete as there are some additional steps to get the euclidean clusters working with the next section.
+
+1. Navigate and source to catkin_ws:
+    1. Launch the euclidean cluster extraction script:
+        ```bash
+        rosrun cluster cluster_extraction
+        ```
 
 ## Cluster to Collision Object Extraction
-1. This section will convert point cloud data into collision objects that are usable by CollisionIK
-1. This code will automatically populate CollisionIK with the collision objects
+This section will convert point cloud data into collision objects that are usable by CollisionIK
+This code will automatically populate CollisionIK with the collision objects using k-means clustering
 
 
 1. Navigate and source to catkin_ws:
@@ -143,6 +156,9 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 ```
 
 ## Existing Issues
+1. Point Cloud Scan instructions are forthcoming
+1. Point Cloud Cluster Extraction instructions are incomplete
+1. The file directory system where point clouds are stored needs to be cleaned
 
 ## Future Directions
 
