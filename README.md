@@ -22,6 +22,32 @@ End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a R
 ## Cluster to Collision Object Extraction
 
 ## Robot Movement with CollisionIK
+1. Navigate to catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/info_files/ur5_info.yaml
+1. Make sure 'starting_config' is set the same as 'STARTING_CONFIG' in ur5_ws/src/mover/src/mover.py 
+
+1. Navigate and source to ur5_ws:
+    1. Launch the movement script:
+        ```bash
+        rosrun mover mover.py
+        ```
+1. Navigate and source to catkin_ws:
+    1. View the robot arm:
+        ```bash
+        roslaunch relaxed_ik_ros1 rviz_viewer.launch
+        ```
+    1. Launch the CollisionIK solver:
+        ```bash
+        roslaunch relaxed_ik_ros1 relaxed_ik_rust.launch
+        ```
+    1. Start the solver:
+        ```bash
+        rosparam set /simulation_time go
+        ```
+    1. Launch the keyboard control:
+        ```bash
+        rosrun relaxed_ik_ros1 keyboard_ikgoal_driver.py
+        ```
+
 
 1. To use the keyboard controller, please ensure that the termainal window where <keyboard_ikgoal_driver.py> was run from has focus (i.e., make sure it's clicked), then use the following keystrokes:
 ```bash
