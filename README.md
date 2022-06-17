@@ -17,12 +17,54 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 ### Turning on the camera
 
 1. Navigate and source to ur5_ws:
-    1. Run the following command to begin publishing camera data:
+1. Run the following command to begin publishing camera data:
+    ```bash
+    roslaunch realsense2_camera rs_rgbd.launch
+    ```
+
+## Calibration
+
+1. The calibration code and instructions were adopted from the following link : https://github.com/portgasray/ur5_realsense_calibration
+
+1. Take note of the IP address of the UR5
+
+1. If you're calibrating the camera on the end of the robot, make sure eye_on_hand is set to true on ur5_realsense_handeyecalibration.launch
+1. Else, it should be set to false
+
+1. Plug in the realsense camera if not done so already
+
+1. Navigate and source to ur5_ws:
+    1. Launch the ur5 robot driver:
+        ```bash
+	    roslaunch ur_robot_driver ur5_bringup.launch robot_ip:=<robot_ip>
+        ```
+    1. Launch the MoveIt Planner:
+        ```bash
+	    roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch
+        ```
+    1. Launch the realsense camera:
         ```bash
         roslaunch realsense2_camera rs_rgbd.launch
         ```
+    1. Launch the calibation code:
+        ```bash
+	    roslaunch easy_handeye ur5_realsense_handeyecalibration.launch
+        ```
 
-## Calibration
+1. Look at the GUI titled "rqt_easy_handeye.perspective - rqt"
+1. Navigate to "Plugins -> Visualization -> Image View" from the options at the top
+1. Select "/aruco_tracker/result" in the topic listbox
+
+1. Move the UR5 until the calibration plane is in place 
+1. Click "Take Sample" under the "Actions" section
+1. Move the UR5 to a different position. Take samples only if the three estimated axes look correct
+1. Take at least 20 samples
+1. Click compute to acquire the 7-element matrix (x, y, z, qx, qy, qz, qw)
+
+1. Navigate to catkin_ws/src/pclTransform/launch/cloudTransform.launch
+1. Locate the node named "calibrationTransform"
+1. Replace the first 7 numerical arguments witht he 7-element matrix in the following order:
+	1. x y z qx qy qz qw
 
 ## Point Cloud Scan
 
