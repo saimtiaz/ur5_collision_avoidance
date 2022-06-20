@@ -24,7 +24,8 @@ def objWriter(objects):
             cuboids.append(object)
 
     #Remove existing settings.yaml
-    settingsFileName = "/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
+
+    settingsFileName = "/home/simtiaz/ur5_collision_avoidance/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
     if (os.path.exists(settingsFileName)):
         os.remove(settingsFileName)
 
@@ -282,7 +283,7 @@ def removeDuplicates(lst):
 
 
 if __name__ == "__main__":
-    pointCloudDir = '/pointCloudDir/'
+    pointCloudDir = '/home/simtiaz/ur5_collision_avoidance/catkin_ws/pointCloudDir/'
     fileList = os.listdir(pointCloudDir)
     objList = []
     fullScan = True
@@ -293,7 +294,7 @@ if __name__ == "__main__":
                 fullFileName = os.path.join(pointCloudDir, file)
                 cluster = pcd2cluster(fullFileName)
                 megaCluster = addCluster(megaCluster, cluster)
-        filteredCluster = filterCluster(megaCluster)
+        filteredCluster = filterCluster(megaCluster, 0.005)
         kObjects = cluster2objKMEANS(megaCluster)
         for object in kObjects:
             objList.append(object)
