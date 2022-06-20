@@ -93,7 +93,7 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
       pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
       
       //Create file name
-      std::string fileName="scan" + std::to_string(scanCount) + ".pcd"; 
+      std::string fileName= "/pointCloudDir/" + "scan" + std::to_string(scanCount) + ".pcd"; 
 
       //Downsample the dataset using a leaf size of 1cm
       // pcl::VoxelGrid<pcl::PointXYZ> vg;

@@ -24,7 +24,7 @@ def objWriter(objects):
             cuboids.append(object)
 
     #Remove existing settings.yaml
-    settingsFileName = "/home/simtiaz/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
+    settingsFileName = "/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
     if (os.path.exists(settingsFileName)):
         os.remove(settingsFileName)
 
@@ -282,10 +282,7 @@ def removeDuplicates(lst):
 
 
 if __name__ == "__main__":
-
-    #filteredCluster = filterCluster(cluster, 0.1)
-
-    pointCloudDir = '/home/simtiaz/catkin_ws/theOne/'
+    pointCloudDir = '/pointCloudDir/'
     fileList = os.listdir(pointCloudDir)
     objList = []
     fullScan = True
