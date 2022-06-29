@@ -20,8 +20,6 @@ public:
   explicit CloudTransformer(ros::NodeHandle nh)
     : nh_(nh)
   {
-    
-    
     // Define Publishers and Subscribers here
     pcl_sub_ = nh_.subscribe("/inputPC", 1, &CloudTransformer::pclCallback, this);
     pcl_pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/outputPC", 1);
@@ -64,12 +62,11 @@ int main(int argc, char **argv)
   ros::NodeHandle nh;
   
 
-  CloudTransformer tranform_cloud(nh);
+  CloudTransformer transform_cloud(nh);
 
   // Spin until ROS is shutdown
   while (ros::ok())
-    
     ros::spin();
-
+  
   return 0;
 }
