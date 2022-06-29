@@ -39,14 +39,10 @@ urPub = rospy.Publisher(  '/ur_hardware_interface/script_command',
 )
 
 if __name__ == '__main__':
-    #Connect to the UR5 via socket
-    print('initialized')
+
+    #Initialize the node
     rospy.init_node('moveScan_ur5', anonymous=True)
     print('node initialized')
-    print('attempting to connect')
-   
-    print('connecting to robot...')
-
 
     #Move the UR5 to initial position
     print('resetting robot!')
@@ -63,7 +59,9 @@ if __name__ == '__main__':
     print('Press c to close!')
     print('Press n to move to the next position!')
     print('Press p to take a frame!')
+
     while not rospy.is_shutdown():
+
         #Read in character
         key = readchar.readkey()
 
@@ -76,12 +74,11 @@ if __name__ == '__main__':
 
         #Else, move to the next position
         elif key == 'n':
-            print("Moving to next position")
             if idx < positionCount - 1:
                 idx = idx + 1
             else:
                 idx = 0
-            #q = np.array(ja_handler.ja_solution) + np.array(OFFSET)
+            print("Moving to next position")
             q = np.array(POSITIONS[idx]) + np.array(OFFSET)
             command = "servoj([{0},{1},{2},{3},{4},{5}],t={7},gain={6})".format(str(
                 q[0]), str(q[1]), str(q[2]), str(q[3]), str(q[4]), str(q[5]), '300', 4.) + "\n"
@@ -89,6 +86,7 @@ if __name__ == '__main__':
         
         #Send command to take a scan
         elif key == 'p':
+            print("Sending scan request")
             takeScan = Bool()
             takeScan.data = True
             scan_pub.publish(takeScan)
