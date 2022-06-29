@@ -93,18 +93,20 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
       pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
       
       //Create file name
-      std::string fileName= "/pointCloudDir/" + "scan" + std::to_string(scanCount) + ".pcd"; 
+      std::string dir = "scan";
+      std::string fileExt = ".pcd";
+      std::string fileName= dir + std::to_string(scanCount) + fileExt; 
 
       //Downsample the dataset using a leaf size of 1cm
-      // pcl::VoxelGrid<pcl::PointXYZ> vg;
-      // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
-      // vg.setInputCloud (cloud);
-      // vg.setLeafSize (0.01f, 0.01f, 0.01f);
-      // vg.filter (*cloud_filtered);
+      pcl::VoxelGrid<pcl::PointXYZ> vg;
+      pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
+      vg.setInputCloud (temp_cloud);
+      vg.setLeafSize (0.01f, 0.01f, 0.01f);
+      vg.filter (*cloud_filtered);
 
       //Save file
-      // pcl::io::savePCDFileASCII (fileName, *cloud_filtered); 
-      pcl::io::savePCDFileASCII (fileName, *temp_cloud);
+      pcl::io::savePCDFileASCII (fileName, *cloud_filtered); 
+      //pcl::io::savePCDFileASCII (fileName, *temp_cloud);
 
       ROS_INFO_STREAM("SCAN COMPLETE");
       scanCount = scanCount + 1;
