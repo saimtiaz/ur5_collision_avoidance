@@ -3,15 +3,15 @@ import os
 import numpy as np
 from sklearn.cluster import KMeans
 import math
-from tf.transformations import quaternion_matrix
 
 #TODO Remove when submitting final project
 import random
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import time
 
 
-def objWriter(objects):
+def objWriter(objects, settingsFileName = "settings.yaml"):
     #Sort by cuboid and spheres
     cuboids = []
     spheres = []
@@ -24,8 +24,10 @@ def objWriter(objects):
             cuboids.append(object)
 
     #Remove existing settings.yaml
-
     settingsFileName = "/home/simtiaz/ur5_collision_avoidance/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
+    #settingsFileName = "/home/simtiaz/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
+    #settingsFileName = "..\\..\\..\\..\\settingmisc\\settings.yaml"
+
     if (os.path.exists(settingsFileName)):
         os.remove(settingsFileName)
 
@@ -139,11 +141,11 @@ def cluster2obj(cluster):
              'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans ,yTrans,zTrans]}
     return cube
 
-def cluster2objKMEANS(cluster):
+def cluster2objKMEANS(cluster, numCluster):
     X = np.column_stack((cluster[0], cluster[1], cluster[2]))
 
     print("KMEANS TIME")
-    numCluster = 100 #Could use metrics such as wcss, sihouette, or volume minimize
+    #Could use metrics such as wcss, sihouette, or volume minimize
     kmeans = KMeans(n_clusters = numCluster).fit(X)
     objList = []
     kClusters = []
@@ -261,12 +263,13 @@ def addCluster(fullCluster, cluster):
     return newFullCluster
 
 def filterCluster(rawCluster, leafSize):
-    filteredX = [round(((round(x/leafSize)) * leafSize), 3) for x in rawCluster[0]]
-    filteredY = [round(((round(y/leafSize)) * leafSize), 3) for y in rawCluster[1]]
-    filteredZ = [round(((round(z/leafSize)) * leafSize), 3) for z in rawCluster[2]]
+    filteredX = [round(((round(x/leafSize)) * leafSize), 8) for x in rawCluster[0]]
+    filteredY = [round(((round(y/leafSize)) * leafSize), 8) for y in rawCluster[1]]
+    filteredZ = [round(((round(z/leafSize)) * leafSize), 8) for z in rawCluster[2]]
     
     filteredTuples = list(zip(filteredX, filteredY, filteredZ))
     filteredTuples = removeDuplicates(filteredTuples)
+    filteredTuples = removeOutOfRange(filteredTuples)
 
     xS = [x[0] for x in filteredTuples]
     yS = [x[1] for x in filteredTuples]
@@ -276,6 +279,11 @@ def filterCluster(rawCluster, leafSize):
     filterCluster = [xS, yS, zS]
     return filterCluster
 
+def removeOutOfRange(filteredTuples):
+    filtered = [x for x in filteredTuples if abs(x[0]) < 1 and abs(x[1]) < 1 and abs(x[2]) < 1]
+    print(filtered)
+    return filtered
+
 def removeDuplicates(lst):
       
     return list(set([i for i in lst]))
@@ -283,30 +291,52 @@ def removeDuplicates(lst):
 
 
 if __name__ == "__main__":
+
     pointCloudDir = '/home/simtiaz/ur5_collision_avoidance/catkin_ws/pointCloudDir/'
+    #pointCloudDir = '..\\..\\..\\..\\pointClouds' THE WINDOWS POINT CLOUD DIRECTORY
+
     fileList = os.listdir(pointCloudDir)
     objList = []
     fullScan = True
     if fullScan:
         megaCluster = [[], [], []]
+        clusterTic = time.perf_counter()
         for file in fileList:
             if (file.endswith(".pcd")):
                 fullFileName = os.path.join(pointCloudDir, file)
                 cluster = pcd2cluster(fullFileName)
                 megaCluster = addCluster(megaCluster, cluster)
+        clusterToc = time.perf_counter()
+        print("Size of the cluster before filtering: ", len(megaCluster[0]))
+        filterTic = time.perf_counter()
         filteredCluster = filterCluster(megaCluster, 0.005)
-        kObjects = cluster2objKMEANS(megaCluster)
+        #filteredCluster = megaCluster
+        filterToc = time.perf_counter()
+        print("Size of cluster after filtering: ", len(filteredCluster[0]))
+        kmeansTic = time.perf_counter()
+        kObjects = cluster2objKMEANS(megaCluster, numCluster = 300)
+        kmeansToc = time.perf_counter()
+        
         for object in kObjects:
             objList.append(object)
+       
+
+
+        print(f"Combined all the point cloud data in {clusterToc - clusterTic:0.4f} seconds")
+        print(f"Filtered the clusters in {filterToc - filterTic:0.4f} seconds")
+        print(f"Seperated the clusters using kmeans in {kmeansToc - kmeansTic:0.4f} seconds")
+        
     else:
         for file in fileList:
             if (file.endswith(".pcd")):
                 fullFileName = os.path.join(pointCloudDir, file)
                 cluster = pcd2cluster(fullFileName)
                 #rotCluster = rotateCluster(cluster)
-                kObjects = cluster2objKMEANS(cluster)
+                kObjects = cluster2objKMEANS(cluster, numCluster = 200)
                 #obj = cluster2obj(cluster)
                 for object in kObjects:
                     objList.append(object)
-    
+    writeTic = time.perf_counter()
     objWriter(objList)
+    writeToc = time.perf_counter()
+    print(f"Wrote the objects to CIK in {writeToc - writeTic:0.4f} seconds")
