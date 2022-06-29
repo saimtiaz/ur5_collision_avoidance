@@ -28,8 +28,8 @@ public:
 
     std::string frameIn;
     std::string frameOut;
-    ros::param::get("/cloud_tansformer/frameIn", frameIn);
-    ros::param::get("/cloud_tansformer/frameOut", frameOut);
+    ros::param::get("/cloud_transformer/frameIn", frameIn);
+    ros::param::get("/cloud_transformer/frameOut", frameOut);
     ROS_INFO("frameIn: %s, frameOut: %s", frameIn.c_str(), frameOut.c_str());
     buffer_.reset(new sensor_msgs::PointCloud2);
     buffer_->header.frame_id = frameOut;
@@ -49,8 +49,8 @@ private:
     
     std::string frameIn;
     std::string frameOut;
-    ros::param::get("/cloud_tansformer/frameIn", frameIn);
-    ros::param::get("/cloud_tansformer/frameOut", frameOut);
+    ros::param::get("/cloud_transformer/frameIn", frameIn);
+    ros::param::get("/cloud_transformer/frameOut", frameOut);
     ROS_INFO("frameIn: %s, frameOut: %s", frameIn.c_str(), frameOut.c_str());
     listener_.waitForTransform(frameOut, frameIn, ros::Time::now(), ros::Duration(3.0));
     pcl_ros::transformPointCloud(frameOut, *pcl_msg, *buffer_, listener_);
