@@ -116,6 +116,8 @@ def pcd2cluster(fileName):
     return cluster
 
 def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
+    roundingFactor = 5
+    makeCubes = True
     xS = cluster[0]
     yS = cluster[1]
     zS = cluster[2]
@@ -129,17 +131,25 @@ def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
     minZ = float(np.percentile(zS, minPercentile))
     maxZ = float(np.percentile(zS, maxPercentile))
 
-    xScale = round(maxX - minX, 4)
-    yScale = round(maxY - minY, 4)
-    zScale = round(maxZ - minZ, 4)
 
-    xTrans = round((maxX + minX)/2, 4)
-    yTrans = round((maxY + minY)/2, 4)
-    zTrans = round((maxZ + minZ)/2, 4)
+    xTrans = round((maxX + minX)/2, roundingFactor)
+    yTrans = round((maxY + minY)/2, roundingFactor)
+    zTrans = round((maxZ + minZ)/2, roundingFactor)
 
-    cube = {'type' : 'cuboid', 'scale' : [xScale, yScale, zScale], 
-             'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans ,yTrans,zTrans]}
-    return cube
+    if makeCubes:
+        xScale = round(maxX - minX, roundingFactor)
+        yScale = round(maxY - minY, roundingFactor)
+        zScale = round(maxZ - minZ, roundingFactor)
+
+        cube = {'type' : 'cuboid', 'scale' : [xScale, yScale, zScale], 
+                'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans , yTrans, zTrans]}
+        return cube
+
+    else:
+        scale = math.sqrt((maxX-minX)**2 + (maxY - minY)**2 + (maxZ - minZ)**2)
+        sphere = {'type' : 'sphere', 'scale' : scale, 
+                'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans , yTrans, zTrans]}
+        return sphere
 
 def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1):
     kClustersOld = [cluster]
