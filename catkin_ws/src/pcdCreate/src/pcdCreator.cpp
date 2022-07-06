@@ -2,6 +2,10 @@
  * Filter and create the point clouds
  */
 
+//Conditional Removal
+#include <pcl/filters/conditional_removal.h>
+
+
 // Include the ROS library
 #include <ros/ros.h>
 
@@ -90,12 +94,30 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
       std::string fileExt = ".pcd";
       std::string fileName= dir + std::to_string(scanCount) + fileExt; 
 
+
+      //Filter out values outside of the arm radius
+      pcl::ConditionAnd<pcl::PointXYZ>::Ptr range_cond (new pcl::ConditionAnd<pcl::PointXYZ> ());
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::GT, -1.1)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::LT, 1.1)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::GT, -1.1)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::LT, 1.1)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::GT, -1.1)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::LT, 1.1)));
+      // build the filter
+      pcl::ConditionalRemoval<pcl::PointXYZ> condrem;
+      condrem.setCondition (range_cond);
+      condrem.setInputCloud (temp_cloud);
+      condrem.setKeepOrganized(true);
+      // apply filter
+      pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
+      condrem.filter(*cloud_filtered);
+
       //Downsample the dataset using a leaf size of 5mm
       pcl::VoxelGrid<pcl::PointXYZ> vg;
-      pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
-      vg.setInputCloud (temp_cloud);
+      pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered2 (new pcl::PointCloud<pcl::PointXYZ>);
+      vg.setInputCloud (cloud_filtered);
       vg.setLeafSize (0.005f, 0.005f, 0.005f);
-      vg.filter (*cloud_filtered);
+      vg.filter (*cloud_filtered2);
 
       //Save file
       pcl::io::savePCDFileASCII (fileName, *cloud_filtered); 
