@@ -115,39 +115,59 @@ def pcd2cluster(fileName):
         
     return cluster
 
-def cluster2obj(cluster):
+def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
     xS = cluster[0]
     yS = cluster[1]
     zS = cluster[2]
 
-    minX = float(np.percentile(xS, 10))
-    maxX = float(np.percentile(xS, 90))
+    minX = float(np.percentile(xS, minPercentile))
+    maxX = float(np.percentile(xS, maxPercentile))
 
-    minY = float(np.percentile(yS, 10))
-    maxY = float(np.percentile(yS, 90))
+    minY = float(np.percentile(yS, minPercentile))
+    maxY = float(np.percentile(yS, maxPercentile))
 
-    minZ = float(np.percentile(zS, 10))
-    maxZ = float(np.percentile(zS, 90))
+    minZ = float(np.percentile(zS, minPercentile))
+    maxZ = float(np.percentile(zS, maxPercentile))
 
-    xScale = round(maxX - minX, 2)
-    yScale = round(maxY - minY, 2)
-    zScale = round(maxZ - minZ, 2)
+    xScale = round(maxX - minX, 4)
+    yScale = round(maxY - minY, 4)
+    zScale = round(maxZ - minZ, 4)
 
-    xTrans = round((maxX + minX)/2, 2)
-    yTrans = round((maxY + minY)/2, 2)
-    zTrans = round((maxZ + minZ)/2, 2)
+    xTrans = round((maxX + minX)/2, 4)
+    yTrans = round((maxY + minY)/2, 4)
+    zTrans = round((maxZ + minZ)/2, 4)
 
     cube = {'type' : 'cuboid', 'scale' : [xScale, yScale, zScale], 
              'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans ,yTrans,zTrans]}
     return cube
 
-def cluster2objKMEANS(cluster, numCluster):
+def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1):
+    kClustersOld = [cluster]
+    kClusters = []
+    objList = []
+    
+    while branchLevel > 0:
+        while len(kClustersOld) > 0:
+            currCluster = kClustersOld.pop()
+            newClusters = kMeansClustering(currCluster, numCluster)
+            kClusters += newClusters
+        branchLevel = branchLevel - 1
+        kClustersOld = kClusters
+        kClusters = []
+    
+    kClusters = kClustersOld
+
+
+    for i in range(0, len(kClusters)):
+        objList.append(cluster2obj(kClusters[i], minPercentile, maxPercentile))
+
+    return objList
+    
+def kMeansClustering(cluster, numCluster):
     X = np.column_stack((cluster[0], cluster[1], cluster[2]))
 
-    print("KMEANS TIME")
     #Could use metrics such as wcss, sihouette, or volume minimize
     kmeans = KMeans(n_clusters = numCluster).fit(X)
-    objList = []
     kClusters = []
 
     for i in range(0, numCluster):
@@ -156,10 +176,29 @@ def cluster2objKMEANS(cluster, numCluster):
         kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
         kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
         kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
-    for i in range(0, numCluster):
-        objList.append(cluster2obj(kClusters[i]))
+    return kClusters
 
-    return objList
+
+
+# def cluster2objKMEANS(cluster, numCluster, minPercentile = 10, maxPercentile = 90):
+#     X = np.column_stack((cluster[0], cluster[1], cluster[2]))
+
+#     print("KMEANS TIME")
+#     #Could use metrics such as wcss, sihouette, or volume minimize
+#     kmeans = KMeans(n_clusters = numCluster).fit(X)
+#     objList = []
+#     kClusters = []
+
+#     for i in range(0, numCluster):
+#         kClusters.append([[],[],[]])
+#     for i in range(0, len(kmeans.labels_)):
+#         kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
+#         kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
+#         kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
+#     for i in range(0, numCluster):
+#         objList.append(cluster2obj(kClusters[i], minPercentile, maxPercentile))
+
+#     return objList
 
 def rotateCluster(cluster):
     return cluster
@@ -281,7 +320,6 @@ def filterCluster(rawCluster, leafSize):
 
 def removeOutOfRange(filteredTuples):
     filtered = [x for x in filteredTuples if abs(x[0]) < 1 and abs(x[1]) < 1 and abs(x[2]) < 1]
-    print(filtered)
     return filtered
 
 def removeDuplicates(lst):
