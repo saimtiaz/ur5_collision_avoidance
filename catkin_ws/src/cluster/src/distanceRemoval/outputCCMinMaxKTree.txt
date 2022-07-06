@@ -1,0 +1,408 @@
+Cluster Count:  100
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2703 seconds
+Filtered the clusters in 0.3801 seconds
+Seperated the clusters using kmeans in 1.1231 seconds
+Wrote the objects to CIK in 0.0021 seconds
+
+
+
+
+
+Cluster Count:  100
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3164 seconds
+Filtered the clusters in 0.3619 seconds
+Seperated the clusters using kmeans in 2.4516 seconds
+Wrote the objects to CIK in 0.0021 seconds
+
+
+
+
+
+Cluster Count:  100
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2954 seconds
+Filtered the clusters in 0.3613 seconds
+Seperated the clusters using kmeans in 1.2253 seconds
+Wrote the objects to CIK in 0.0036 seconds
+
+
+
+
+
+Cluster Count:  100
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3070 seconds
+Filtered the clusters in 0.3702 seconds
+Seperated the clusters using kmeans in 2.3071 seconds
+Wrote the objects to CIK in 0.0021 seconds
+
+
+
+
+
+Cluster Count:  100
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3277 seconds
+Filtered the clusters in 0.3853 seconds
+Seperated the clusters using kmeans in 1.2520 seconds
+Wrote the objects to CIK in 0.0020 seconds
+
+
+
+
+
+Cluster Count:  100
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3259 seconds
+Filtered the clusters in 0.3772 seconds
+Seperated the clusters using kmeans in 2.3910 seconds
+Wrote the objects to CIK in 0.0022 seconds
+
+
+
+
+
+Cluster Count:  200
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3062 seconds
+Filtered the clusters in 0.4137 seconds
+Seperated the clusters using kmeans in 1.6266 seconds
+Wrote the objects to CIK in 0.0023 seconds
+
+
+
+
+
+Cluster Count:  200
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3099 seconds
+Filtered the clusters in 0.3909 seconds
+Seperated the clusters using kmeans in 4.3631 seconds
+Wrote the objects to CIK in 0.0031 seconds
+
+
+
+
+
+Cluster Count:  200
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3088 seconds
+Filtered the clusters in 0.3769 seconds
+Seperated the clusters using kmeans in 1.6703 seconds
+Wrote the objects to CIK in 0.0022 seconds
+
+
+
+
+
+Cluster Count:  200
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3211 seconds
+Filtered the clusters in 0.3984 seconds
+Seperated the clusters using kmeans in 4.0714 seconds
+Wrote the objects to CIK in 0.0022 seconds
+
+
+
+
+
+Cluster Count:  200
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3047 seconds
+Filtered the clusters in 0.3805 seconds
+Seperated the clusters using kmeans in 1.6951 seconds
+Wrote the objects to CIK in 0.0023 seconds
+
+
+
+
+
+Cluster Count:  200
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2920 seconds
+Filtered the clusters in 0.3820 seconds
+Seperated the clusters using kmeans in 4.3540 seconds
+Wrote the objects to CIK in 0.0023 seconds
+
+
+
+
+
+Cluster Count:  500
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3043 seconds
+Filtered the clusters in 0.3903 seconds
+Seperated the clusters using kmeans in 2.7028 seconds
+Wrote the objects to CIK in 0.0040 seconds
+
+
+
+
+
+Cluster Count:  500
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2725 seconds
+Filtered the clusters in 0.3871 seconds
+Seperated the clusters using kmeans in 7.5018 seconds
+Wrote the objects to CIK in 0.0039 seconds
+
+
+
+
+
+Cluster Count:  500
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2814 seconds
+Filtered the clusters in 0.3703 seconds
+Seperated the clusters using kmeans in 3.2418 seconds
+Wrote the objects to CIK in 0.0042 seconds
+
+
+
+
+
+Cluster Count:  500
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2995 seconds
+Filtered the clusters in 0.3909 seconds
+Seperated the clusters using kmeans in 8.1606 seconds
+Wrote the objects to CIK in 0.0043 seconds
+
+
+
+
+
+Cluster Count:  500
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.3129 seconds
+Filtered the clusters in 0.4015 seconds
+Seperated the clusters using kmeans in 2.7452 seconds
+Wrote the objects to CIK in 0.0039 seconds
+
+
+
+
+
+Cluster Count:  500
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2831 seconds
+Filtered the clusters in 0.3740 seconds
+Seperated the clusters using kmeans in 7.7314 seconds
+Wrote the objects to CIK in 0.0043 seconds
+
+
+
+
+
+Cluster Count:  2000
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2853 seconds
+Filtered the clusters in 0.4159 seconds
+Seperated the clusters using kmeans in 6.9856 seconds
+Wrote the objects to CIK in 0.0137 seconds
+
+
+
+
+
+Cluster Count:  2000
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 1 , 99 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2852 seconds
+Filtered the clusters in 0.3800 seconds
+Seperated the clusters using kmeans in 28.3149 seconds
+Wrote the objects to CIK in 0.0140 seconds
+
+
+
+
+
+Cluster Count:  2000
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2819 seconds
+Filtered the clusters in 0.3644 seconds
+Seperated the clusters using kmeans in 6.7505 seconds
+Wrote the objects to CIK in 0.0137 seconds
+
+
+
+
+
+Cluster Count:  2000
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 5 , 95 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2730 seconds
+Filtered the clusters in 0.3663 seconds
+Seperated the clusters using kmeans in 27.3841 seconds
+Wrote the objects to CIK in 0.0132 seconds
+
+
+
+
+
+Cluster Count:  2000
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  True
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2791 seconds
+Filtered the clusters in 0.4096 seconds
+Seperated the clusters using kmeans in 6.5698 seconds
+Wrote the objects to CIK in 0.0137 seconds
+
+
+
+
+
+Cluster Count:  2000
+Filter applied:  true
+Leaf size:  0.001
+Ktree Branching applied:  False
+Min Max: ( 10 , 90 )
+---------------------------------------
+Size of the cluster before filtering:  150278
+Size of cluster after filtering:  12165
+Combined all the point cloud data in 0.2735 seconds
+Filtered the clusters in 0.3815 seconds
+Seperated the clusters using kmeans in 25.6568 seconds
+Wrote the objects to CIK in 0.0166 seconds
+
+
+
+
+

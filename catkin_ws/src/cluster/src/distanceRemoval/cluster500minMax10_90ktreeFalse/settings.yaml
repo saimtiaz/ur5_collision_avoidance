@@ -1,0 +1,2507 @@
+loaded_robot:
+  name: ur5_info.yaml
+  link_radius: 0.05
+  objective_mode: ECAA
+  input_device: keyboard
+obstacles:
+  cuboids:
+    - name: box1
+      scale: [0.0179, 0.0269, 0.0301]
+      translation: [0.8039, -0.6915, -0.25]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box2
+      scale: [0.039, 0.0263, 0.006]
+      translation: [-0.1275, -0.9518, -0.232]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box3
+      scale: [0.0354, 0.005, 0.0308]
+      translation: [0.3133, -0.9785, 0.0004]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box4
+      scale: [0.001, 0.035, 0.0299]
+      translation: [0.9605, -0.7665, 0.1099]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box5
+      scale: [0.028, 0.03, 0.0098]
+      translation: [0.131, -0.83, -0.2391]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box6
+      scale: [0.0277, 0.0218, 0.01]
+      translation: [0.687, -0.9541, -0.257]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box7
+      scale: [0.036, 0.0316, 0.005]
+      translation: [-0.255, -0.7492, -0.2175]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box8
+      scale: [0.0043, 0.0258, 0.02]
+      translation: [0.4012, -0.6573, -0.215]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box9
+      scale: [0.03, 0.042, 0.003]
+      translation: [0.95, -0.934, -0.2645]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box10
+      scale: [0.04, 0.006, 0.038]
+      translation: [0.355, -0.848, -0.224]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box11
+      scale: [0.026, 0.035, 0.002]
+      translation: [-0.372, -0.9125, -0.2825]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box12
+      scale: [0.03, 0.026, 0.0036]
+      translation: [-0.16, -0.768, -0.2158]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box13
+      scale: [0.032, 0.038, 0.0048]
+      translation: [0.187, -0.914, -0.0466]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box14
+      scale: [0.0038, 0.0342, 0.035]
+      translation: [0.9615, -0.8779, 0.0125]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box15
+      scale: [0.0268, 0.0335, 0.015]
+      translation: [0.5375, -0.798, -0.2355]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box16
+      scale: [0.0251, 0.0291, 0.0151]
+      translation: [0.7575, -0.8396, -0.2445]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box17
+      scale: [0.0013, 0.0327, 0.0303]
+      translation: [0.9567, -0.9421, 0.1598]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box18
+      scale: [0.0301, 0.004, 0.04]
+      translation: [0.39, -0.853, -0.125]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box19
+      scale: [0.0024, 0.0236, 0.039]
+      translation: [0.0872, -0.9468, -0.1555]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box20
+      scale: [0.0219, 0.0301, 0.0085]
+      translation: [0.6426, -0.9144, -0.1129]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box21
+      scale: [0.04, 0.0372, 0.008]
+      translation: [0.035, -0.7636, -0.199]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box22
+      scale: [0.0363, 0.039, 0.011]
+      translation: [-0.2932, -0.9254, -0.1705]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box23
+      scale: [0.0274, 0.0233, 0.004]
+      translation: [0.7886, -0.9275, -0.239]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box24
+      scale: [0.029, 0.032, 0.004]
+      translation: [-0.3495, -0.761, -0.211]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box25
+      scale: [0.002, 0.03, 0.04]
+      translation: [0.963, -0.67, 0.105]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box26
+      scale: [0.04, 0.03, 0.003]
+      translation: [0.975, -0.81, -0.2335]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box27
+      scale: [0.0188, 0.0186, 0.0198]
+      translation: [0.8856, -0.7747, -0.0849]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box28
+      scale: [0.0276, 0.031, 0.002]
+      translation: [0.4983, -0.9286, -0.067]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box29
+      scale: [0.0207, 0.0257, 0.0147]
+      translation: [0.6146, -0.8721, -0.2263]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box30
+      scale: [0.03, 0.03, 0.0288]
+      translation: [0.89, -0.9, -0.2476]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box31
+      scale: [0.002, 0.031, 0.0292]
+      translation: [0.957, -0.8496, 0.1686]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box32
+      scale: [0.0202, 0.0201, 0.0281]
+      translation: [-0.2249, -0.8649, -0.2021]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box33
+      scale: [0.028, 0.029, 0.003]
+      translation: [0.748, -0.9805, -0.1395]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box34
+      scale: [0.0327, 0.003, 0.0294]
+      translation: [0.3313, -0.8495, -0.0997]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box35
+      scale: [0.0397, 0.0077, 0.03]
+      translation: [0.2452, -0.8391, -0.23]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box36
+      scale: [0.0235, 0.0157, 0.007]
+      translation: [-0.0633, -0.6871, -0.2425]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box37
+      scale: [0.003, 0.0285, 0.0245]
+      translation: [0.398, -0.6562, -0.1522]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box38
+      scale: [0.0218, 0.029, 0.0028]
+      translation: [-0.0359, -0.9395, -0.1896]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box39
+      scale: [0.0348, 0.0329, 0.0043]
+      translation: [0.6269, -0.7351, -0.2409]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box40
+      scale: [0.002, 0.0336, 0.0294]
+      translation: [0.965, -0.7528, -0.0003]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box41
+      scale: [0.0204, 0.0213, 0.0172]
+      translation: [-0.3201, -0.868, -0.2026]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box42
+      scale: [0.02, 0.01, 0.04]
+      translation: [0.185, -0.846, -0.105]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box43
+      scale: [0.02, 0.02, 0.0265]
+      translation: [0.825, -0.985, -0.2492]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box44
+      scale: [0.0232, 0.0288, 0.0116]
+      translation: [-0.0784, -0.8224, -0.1948]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box45
+      scale: [0.03, 0.03, 0.0121]
+      translation: [0.08, -0.84, -0.205]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box46
+      scale: [0.02, 0.04, 0.002]
+      translation: [0.375, -0.755, -0.245]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box47
+      scale: [0.028, 0.0284, 0.008]
+      translation: [0.499, -0.6278, -0.24]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box48
+      scale: [0.0262, 0.0318, 0.0154]
+      translation: [-0.3619, -0.8691, -0.2393]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box49
+      scale: [0.0227, 0.031, 0.0051]
+      translation: [0.8637, -0.7705, -0.2626]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box50
+      scale: [0.0358, 0.0378, 0.001]
+      translation: [0.8549, -0.9339, -0.1365]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box51
+      scale: [0.0278, 0.0382, 0.0084]
+      translation: [-0.2511, -0.9695, -0.1768]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box52
+      scale: [0.0316, 0.0306, 0.0052]
+      translation: [0.0848, -0.7097, -0.209]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box53
+      scale: [0.002, 0.0372, 0.0336]
+      translation: [0.953, -0.8946, 0.251]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box54
+      scale: [0.04, 0.03, 0.001]
+      translation: [0.315, -0.89, -0.0435]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box55
+      scale: [0.029, 0.004, 0.0401]
+      translation: [0.4795, -0.859, -0.1451]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box56
+      scale: [0.0236, 0.03, 0.0214]
+      translation: [0.7132, -0.81, -0.2545]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box57
+      scale: [0.0282, 0.0222, 0.008]
+      translation: [0.0409, -0.9261, -0.199]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box58
+      scale: [0.021, 0.024, 0.0254]
+      translation: [-0.2655, -0.825, -0.2213]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box59
+      scale: [0.015, 0.0324, 0.025]
+      translation: [0.0975, -0.8988, -0.0525]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box60
+      scale: [0.002, 0.0208, 0.0342]
+      translation: [0.968, -0.6362, -0.0193]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box61
+      scale: [0.04, 0.031, 0.0021]
+      translation: [0.415, -0.9495, -0.044]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box62
+      scale: [0.002, 0.0311, 0.0311]
+      translation: [0.96, -0.9305, 0.0704]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box63
+      scale: [0.0336, 0.028, 0.0106]
+      translation: [0.5868, -0.9066, -0.2073]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box64
+      scale: [0.0324, 0.0376, 0.002]
+      translation: [0.2312, -0.7662, -0.246]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box65
+      scale: [0.0178, 0.0146, 0.0277]
+      translation: [-0.132, -0.7255, -0.1411]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box66
+      scale: [0.013, 0.022, 0.0302]
+      translation: [0.9615, -0.784, -0.0681]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box67
+      scale: [0.0236, 0.0306, 0.018]
+      translation: [-0.0468, -0.7097, -0.195]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box68
+      scale: [0.0255, 0.03, 0.005]
+      translation: [0.1583, -0.98, -0.2135]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box69
+      scale: [0.026, 0.0206, 0.0216]
+      translation: [0.7484, -0.9853, -0.2548]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box70
+      scale: [0.002, 0.03, 0.0425]
+      translation: [0.956, -0.8095, 0.2062]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box71
+      scale: [0.036, 0.03, 0.0108]
+      translation: [0.177, -0.96, -0.0436]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box72
+      scale: [0.0267, 0.0199, 0.0145]
+      translation: [0.5935, -0.9251, -0.1144]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box73
+      scale: [0.029, 0.02, 0.027]
+      translation: [0.9305, -0.985, -0.2495]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box74
+      scale: [0.0263, 0.0266, 0.0213]
+      translation: [-0.1008, -0.848, -0.1724]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box75
+      scale: [0.022, 0.0206, 0.0196]
+      translation: [0.676, -0.8955, -0.2332]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box76
+      scale: [0.0303, 0.0232, 0.0179]
+      translation: [0.2499, -0.9766, -0.0333]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box77
+      scale: [0.0303, 0.0208, 0.0136]
+      translation: [-0.1729, -0.6983, -0.2286]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box78
+      scale: [0.028, 0.033, 0.0013]
+      translation: [0.506, -0.8815, -0.0657]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box79
+      scale: [0.0231, 0.0394, 0.0057]
+      translation: [0.7742, -0.9047, -0.1321]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box80
+      scale: [0.0426, 0.0283, 0.0086]
+      translation: [-0.147, -0.9302, -0.193]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box81
+      scale: [0.04, 0.03, 0.0023]
+      translation: [0.445, -0.8, -0.2439]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box82
+      scale: [0.001, 0.0332, 0.0294]
+      translation: [0.9595, -0.7184, 0.1835]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box83
+      scale: [0.0232, 0.0108, 0.0288]
+      translation: [0.2406, -0.9844, 0.0006]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box84
+      scale: [0.0212, 0.0072, 0.011]
+      translation: [-0.4028, -0.8048, -0.2475]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box85
+      scale: [0.036, 0.028, 0.0242]
+      translation: [0.945, -0.859, -0.2461]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box86
+      scale: [0.02, 0.0218, 0.0176]
+      translation: [0.5924, -0.8549, -0.227]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box87
+      scale: [0.0184, 0.03, 0.0032]
+      translation: [-0.4038, -0.98, -0.2494]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box88
+      scale: [0.0042, 0.0212, 0.0402]
+      translation: [0.9619, -0.9554, 0.0217]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box89
+      scale: [0.0381, 0.0389, 0.002]
+      translation: [0.876, -0.8545, -0.263]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box90
+      scale: [0.04, 0.002, 0.031]
+      translation: [0.265, -0.845, -0.1705]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box91
+      scale: [0.0272, 0.026, 0.0244]
+      translation: [0.6184, -0.9444, -0.2538]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box92
+      scale: [0.03, 0.04, 0.0012]
+      translation: [0.94, -0.795, -0.2625]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box93
+      scale: [0.003, 0.0296, 0.03]
+      translation: [0.0855, -0.9802, -0.17]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box94
+      scale: [0.0032, 0.0304, 0.04]
+      translation: [0.9504, -0.98, 0.2824]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box95
+      scale: [0.0219, 0.02, 0.0169]
+      translation: [0.146, -0.865, -0.2035]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box96
+      scale: [0.04, 0.011, 0.0284]
+      translation: [0.235, -0.8495, -0.0578]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box97
+      scale: [0.029, 0.02, 0.007]
+      translation: [0.8895, -0.965, -0.2395]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box98
+      scale: [0.022, 0.0205, 0.009]
+      translation: [0.614, -0.8337, -0.237]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box99
+      scale: [0.0321, 0.025, 0.023]
+      translation: [-0.149, -0.8425, -0.2385]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box100
+      scale: [0.0262, 0.0296, 0.023]
+      translation: [0.589, -0.8927, -0.2495]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box101
+      scale: [0.03, 0.026, 0.0156]
+      translation: [-0.33, -0.708, -0.2238]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box102
+      scale: [0.003, 0.0258, 0.0286]
+      translation: [0.9595, -0.8579, 0.0819]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box103
+      scale: [0.0157, 0.0077, 0.0214]
+      translation: [0.4232, -0.6231, -0.145]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box104
+      scale: [0.0228, 0.0134, 0.0324]
+      translation: [0.515, -0.8717, -0.2112]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box105
+      scale: [0.033, 0.03, 0.0104]
+      translation: [0.0855, -0.8, -0.2102]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box106
+      scale: [0.003, 0.031, 0.04]
+      translation: [0.0845, -0.9795, -0.075]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box107
+      scale: [0.0252, 0.03, 0.007]
+      translation: [0.0424, -0.85, -0.1995]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box108
+      scale: [0.015, 0.032, 0.02]
+      translation: [0.0975, -0.888, -0.125]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box109
+      scale: [0.0382, 0.0342, 0.0062]
+      translation: [-0.0959, -0.9321, -0.1979]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box110
+      scale: [0.0327, 0.03, 0.005]
+      translation: [-0.0213, -0.98, -0.1905]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box111
+      scale: [0.03, 0.0298, 0.022]
+      translation: [0.4, -0.8681, -0.054]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box112
+      scale: [0.019, 0.029, 0.008]
+      translation: [0.0475, -0.9605, -0.201]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box113
+      scale: [0.0363, 0.03, 0.002]
+      translation: [0.3168, -0.71, -0.247]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box114
+      scale: [0.0074, 0.0192, 0.0292]
+      translation: [0.9613, -0.8446, -0.0696]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box115
+      scale: [0.018, 0.04, 0.023]
+      translation: [0.623, -0.965, -0.1255]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box116
+      scale: [0.023, 0.022, 0.015]
+      translation: [0.6935, -0.776, -0.2345]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box117
+      scale: [0.0352, 0.0458, 0.002]
+      translation: [-0.3126, -0.9721, -0.204]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box118
+      scale: [0.03, 0.031, 0.008]
+      translation: [0.33, -0.9615, -0.039]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box119
+      scale: [0.0226, 0.0358, 0.0298]
+      translation: [0.1863, -0.7861, -0.2301]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box120
+      scale: [0.039, 0.039, 0.002]
+      translation: [0.3145, -0.7855, -0.246]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box121
+      scale: [0.0296, 0.0308, 0.0076]
+      translation: [-0.2002, -0.7608, -0.2112]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box122
+      scale: [0.0361, 0.0283, 0.0099]
+      translation: [0.7358, -0.9192, -0.2309]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box123
+      scale: [0.03, 0.0367, 0.0037]
+      translation: [0.45, -0.7536, -0.2449]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box124
+      scale: [0.0252, 0.0253, 0.0093]
+      translation: [0.5717, -0.6835, -0.2374]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box125
+      scale: [0.032, 0.032, 0.004]
+      translation: [0.809, -0.889, -0.265]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box126
+      scale: [0.0266, 0.0314, 0.0266]
+      translation: [0.1077, -0.7572, -0.224]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box127
+      scale: [0.03, 0.021, 0.006]
+      translation: [-0.19, -0.9445, -0.222]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box128
+      scale: [0.04, 0.0033, 0.03]
+      translation: [0.435, -0.8534, -0.19]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box129
+      scale: [0.0205, 0.03, 0.015]
+      translation: [0.8053, -0.73, -0.2565]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box130
+      scale: [0.0282, 0.03, 0.0042]
+      translation: [0.1291, -0.91, -0.208]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box131
+      scale: [0.04, 0.022, 0.0142]
+      translation: [-0.375, -0.706, -0.2171]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box132
+      scale: [0.0275, 0.02, 0.002]
+      translation: [-0.4088, -0.875, -0.281]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box133
+      scale: [0.025, 0.0275, 0.0115]
+      translation: [0.8075, -0.9512, -0.2447]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box134
+      scale: [0.031, 0.02, 0.008]
+      translation: [-0.0965, -0.725, -0.219]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box135
+      scale: [0.04, 0.0321, 0.0052]
+      translation: [0.895, -0.7289, -0.2685]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box136
+      scale: [0.0018, 0.03, 0.04]
+      translation: [0.9649, -0.68, 0.055]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box137
+      scale: [0.0304, 0.0046, 0.0068]
+      translation: [-0.3518, -0.8087, -0.247]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box138
+      scale: [0.001, 0.0292, 0.0304]
+      translation: [0.9605, -0.7278, 0.1442]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box139
+      scale: [0.0207, 0.0256, 0.0047]
+      translation: [0.8546, -0.8922, -0.2374]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box140
+      scale: [0.025, 0.038, 0.0148]
+      translation: [-0.0805, -0.894, -0.2296]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box141
+      scale: [0.0269, 0.0292, 0.004]
+      translation: [-0.0384, -0.6696, -0.19]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box142
+      scale: [0.0288, 0.0282, 0.0194]
+      translation: [-0.1906, -0.8409, -0.2133]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box143
+      scale: [0.0305, 0.027, 0.016]
+      translation: [-0.2102, -0.701, -0.2275]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box144
+      scale: [0.0319, 0.0386, 0.0033]
+      translation: [-0.0209, -0.7843, -0.1916]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box145
+      scale: [0.0465, 0.03, 0.001]
+      translation: [0.4582, -0.98, -0.0435]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box146
+      scale: [0.0297, 0.0336, 0.0119]
+      translation: [0.1371, -0.9418, -0.035]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box147
+      scale: [0.0299, 0.0269, 0.0109]
+      translation: [-0.36, -0.8316, -0.2765]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box148
+      scale: [0.0203, 0.021, 0.0296]
+      translation: [0.6649, -0.8355, -0.2498]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box149
+      scale: [0.001, 0.036, 0.031]
+      translation: [0.9675, -0.716, -0.0595]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box150
+      scale: [0.019, 0.0352, 0.0092]
+      translation: [-0.3755, -0.9766, -0.2468]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box151
+      scale: [0.039, 0.0301, 0.005]
+      translation: [0.8255, -0.9799, -0.1355]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box152
+      scale: [0.03, 0.003, 0.03]
+      translation: [0.27, -0.8465, -0.09]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box153
+      scale: [0.02, 0.0304, 0.0104]
+      translation: [0.065, -0.8808, -0.2022]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box154
+      scale: [0.0372, 0.0029, 0.03]
+      translation: [0.4636, -0.8575, -0.1]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box155
+      scale: [0.03, 0.0372, 0.0126]
+      translation: [0.27, -0.9244, -0.0357]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box156
+      scale: [0.026, 0.0208, 0.006]
+      translation: [0.438, -0.663, -0.091]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box157
+      scale: [0.0017, 0.0407, 0.0377]
+      translation: [0.9651, -0.8246, -0.0262]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box158
+      scale: [0.0092, 0.028, 0.013]
+      translation: [-0.149, -0.7922, -0.1145]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box159
+      scale: [0.0246, 0.0228, 0.017]
+      translation: [0.9629, -0.9836, -0.2625]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box160
+      scale: [0.0328, 0.0227, 0.0109]
+      translation: [0.5675, -0.9846, -0.1094]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box161
+      scale: [0.04, 0.03, 0.002]
+      translation: [0.375, -0.71, -0.246]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box162
+      scale: [0.03, 0.0384, 0.0036]
+      translation: [-0.1318, -0.9742, -0.191]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box163
+      scale: [0.0294, 0.03, 0.0246]
+      translation: [-0.2897, -0.86, -0.2021]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box164
+      scale: [0.0318, 0.029, 0.0062]
+      translation: [0.0291, -0.6705, -0.1995]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box165
+      scale: [0.002, 0.02, 0.04]
+      translation: [0.963, -0.755, 0.045]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box166
+      scale: [0.0204, 0.021, 0.0204]
+      translation: [0.7952, -0.9855, -0.2502]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box167
+      scale: [0.0214, 0.0222, 0.0072]
+      translation: [0.5943, -0.8077, -0.2378]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box168
+      scale: [0.03, 0.0188, 0.022]
+      translation: [0.3, -0.9856, 0.036]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box169
+      scale: [0.04, 0.031, 0.002]
+      translation: [0.785, -0.7795, -0.265]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box170
+      scale: [0.038, 0.04, 0.0055]
+      translation: [0.576, -0.975, -0.2658]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box171
+      scale: [0.03, 0.002, 0.03]
+      translation: [0.35, -0.85, -0.18]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box172
+      scale: [0.0306, 0.021, 0.0144]
+      translation: [0.3507, -0.9845, -0.0348]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box173
+      scale: [0.04, 0.03, 0.001]
+      translation: [0.925, -0.84, -0.2635]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box174
+      scale: [0.03, 0.0029, 0.04]
+      translation: [0.22, -0.8424, -0.185]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box175
+      scale: [0.029, 0.022, 0.017]
+      translation: [0.6685, -0.985, -0.2565]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box176
+      scale: [0.0315, 0.04, 0.006]
+      translation: [-0.0107, -0.845, -0.192]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box177
+      scale: [0.0297, 0.0279, 0.0189]
+      translation: [0.7298, -0.85, -0.2465]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box178
+      scale: [0.001, 0.0317, 0.0389]
+      translation: [0.9525, -0.979, 0.2254]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box179
+      scale: [0.0244, 0.0312, 0.0182]
+      translation: [-0.1098, -0.8086, -0.1989]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box180
+      scale: [0.026, 0.0292, 0.0246]
+      translation: [0.468, -0.89, -0.0533]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box181
+      scale: [0.0278, 0.0278, 0.0152]
+      translation: [0.7511, -0.7095, -0.2572]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box182
+      scale: [0.0047, 0.0397, 0.0267]
+      translation: [0.9607, -0.9239, -0.0183]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box183
+      scale: [0.0274, 0.03, 0.0092]
+      translation: [0.6287, -0.94, -0.2074]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box184
+      scale: [0.0027, 0.0317, 0.0207]
+      translation: [0.9587, -0.8391, 0.1247]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box185
+      scale: [0.031, 0.0394, 0.0084]
+      translation: [0.8605, -0.8809, -0.1315]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box186
+      scale: [0.002, 0.0297, 0.0354]
+      translation: [0.961, -0.6799, 0.1627]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box187
+      scale: [0.0236, 0.03, 0.0166]
+      translation: [0.1238, -0.79, -0.2357]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box188
+      scale: [0.0295, 0.0297, 0.002]
+      translation: [0.1099, -0.9501, -0.209]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box189
+      scale: [0.026, 0.029, 0.0062]
+      translation: [-0.388, -0.7695, -0.2079]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box190
+      scale: [0.0324, 0.032, 0.0032]
+      translation: [-0.229, -0.929, -0.1794]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box191
+      scale: [0.0344, 0.03, 0.013]
+      translation: [-0.0768, -0.94, -0.2305]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box192
+      scale: [0.0312, 0.033, 0.0142]
+      translation: [-0.1326, -0.6925, -0.2245]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box193
+      scale: [0.0294, 0.03, 0.0037]
+      translation: [-0.1703, -0.98, -0.1891]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box194
+      scale: [0.0206, 0.0218, 0.029]
+      translation: [0.6653, -0.9053, -0.1225]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box195
+      scale: [0.0304, 0.0074, 0.0297]
+      translation: [-0.2305, -0.828, -0.2509]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box196
+      scale: [0.0381, 0.039, 0.0049]
+      translation: [-0.2949, -0.9755, -0.1714]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box197
+      scale: [0.0228, 0.0289, 0.0098]
+      translation: [-0.2545, -0.7106, -0.223]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box198
+      scale: [0.0029, 0.0388, 0.029]
+      translation: [0.9586, -0.9746, 0.0795]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box199
+      scale: [0.0337, 0.03, 0.006]
+      translation: [-0.1419, -0.88, -0.23]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box200
+      scale: [0.0295, 0.0285, 0.003]
+      translation: [-0.3197, -0.7908, -0.21]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box201
+      scale: [0.0028, 0.038, 0.0298]
+      translation: [0.9556, -0.8932, 0.1499]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box202
+      scale: [0.028, 0.027, 0.02]
+      translation: [0.172, -0.8405, -0.205]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box203
+      scale: [0.03, 0.0209, 0.0124]
+      translation: [0.46, -0.6255, -0.2378]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box204
+      scale: [0.0286, 0.0317, 0.0168]
+      translation: [0.6115, -0.8921, -0.1275]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box205
+      scale: [0.0392, 0.0022, 0.03]
+      translation: [0.3654, -0.8521, -0.08]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box206
+      scale: [0.0255, 0.0273, 0.0052]
+      translation: [0.7324, -0.9613, -0.2405]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box207
+      scale: [0.0346, 0.011, 0.016]
+      translation: [-0.2787, -0.8245, -0.273]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box208
+      scale: [0.02, 0.029, 0.0177]
+      translation: [0.775, -0.9805, -0.2461]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box209
+      scale: [0.0283, 0.0023, 0.03]
+      translation: [0.1291, -0.8739, -0.11]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box210
+      scale: [0.0219, 0.0369, 0.009]
+      translation: [0.734, -0.8964, -0.2615]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box211
+      scale: [0.024, 0.0239, 0.0159]
+      translation: [0.653, -0.9231, -0.2286]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box212
+      scale: [0.03, 0.03, 0.0057]
+      translation: [-0.27, -0.94, -0.2092]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box213
+      scale: [0.0304, 0.0338, 0.0044]
+      translation: [0.1498, -0.7995, -0.2112]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box214
+      scale: [0.03, 0.002, 0.04]
+      translation: [0.31, -0.847, -0.175]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box215
+      scale: [0.0336, 0.034, 0.0124]
+      translation: [0.9218, -0.882, -0.2588]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box216
+      scale: [0.0166, 0.0327, 0.0083]
+      translation: [0.734, -0.933, -0.1321]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box217
+      scale: [0.031, 0.03, 0.004]
+      translation: [0.9805, -0.92, -0.238]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box218
+      scale: [0.0408, 0.031, 0.012]
+      translation: [0.3046, -0.8305, -0.24]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box219
+      scale: [0.031, 0.0032, 0.03]
+      translation: [0.1205, -0.8744, -0.07]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box220
+      scale: [0.002, 0.0273, 0.0373]
+      translation: [0.959, -0.7613, 0.1563]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box221
+      scale: [0.03, 0.0345, 0.0075]
+      translation: [0.49, -0.8222, -0.2392]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box222
+      scale: [0.021, 0.0273, 0.02]
+      translation: [-0.2555, -0.8586, -0.214]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box223
+      scale: [0.0032, 0.031, 0.031]
+      translation: [0.9545, -0.8695, 0.2095]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box224
+      scale: [0.004, 0.0292, 0.0411]
+      translation: [0.962, -0.8395, 0.0355]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box225
+      scale: [0.0294, 0.03, 0.0024]
+      translation: [-0.3803, -0.95, -0.2828]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box226
+      scale: [0.0328, 0.0294, 0.0048]
+      translation: [-0.1914, -0.8797, -0.2214]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box227
+      scale: [0.0292, 0.03, 0.0036]
+      translation: [0.2166, -0.88, -0.0422]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box228
+      scale: [0.0226, 0.029, 0.0106]
+      translation: [-0.0563, -0.7895, -0.1935]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box229
+      scale: [0.0329, 0.03, 0.006]
+      translation: [-0.2605, -0.98, -0.211]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box230
+      scale: [0.0172, 0.0372, 0.0214]
+      translation: [-0.357, -0.9276, -0.2363]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box231
+      scale: [0.0419, 0.0084, 0.0197]
+      translation: [0.9011, -0.7835, -0.0469]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box232
+      scale: [0.0428, 0.03, 0.0044]
+      translation: [0.1116, -0.98, -0.0432]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box233
+      scale: [0.03, 0.0074, 0.0286]
+      translation: [0.4, -0.8489, -0.2193]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box234
+      scale: [0.0215, 0.029, 0.0205]
+      translation: [0.5443, -0.842, -0.2198]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box235
+      scale: [0.04, 0.03, 0.006]
+      translation: [0.825, -0.82, -0.261]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box236
+      scale: [0.0237, 0.0298, 0.003]
+      translation: [0.8669, -0.9299, -0.2395]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box237
+      scale: [0.0365, 0.023, 0.0103]
+      translation: [0.166, -0.9875, -0.0432]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box238
+      scale: [0.003, 0.037, 0.02]
+      translation: [0.9675, -0.6865, -0.025]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box239
+      scale: [0.0234, 0.021, 0.0141]
+      translation: [-0.2736, -0.8645, -0.1827]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box240
+      scale: [0.023, 0.0318, 0.0022]
+      translation: [0.9865, -0.9707, -0.2691]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box241
+      scale: [0.0017, 0.038, 0.0364]
+      translation: [0.9621, -0.635, 0.1442]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box242
+      scale: [0.0018, 0.026, 0.038]
+      translation: [0.9661, -0.632, 0.044]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box243
+      scale: [0.0251, 0.0073, 0.0303]
+      translation: [0.4235, -0.6277, -0.2001]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box244
+      scale: [0.034, 0.0238, 0.0119]
+      translation: [0.6263, -0.776, -0.2349]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box245
+      scale: [0.04, 0.035, 0.0028]
+      translation: [0.365, -0.9125, -0.0436]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box246
+      scale: [0.0142, 0.0162, 0.021]
+      translation: [0.4051, -0.6375, -0.1245]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box247
+      scale: [0.03, 0.04, 0.002]
+      translation: [0.9, -0.775, -0.263]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box248
+      scale: [0.0268, 0.0366, 0.003]
+      translation: [-0.3984, -0.8955, -0.2475]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box249
+      scale: [0.0039, 0.0373, 0.0391]
+      translation: [0.088, -0.9345, -0.1054]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box250
+      scale: [0.0259, 0.0288, 0.007]
+      translation: [0.695, -0.7725, -0.2625]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box251
+      scale: [0.03, 0.017, 0.022]
+      translation: [0.28, -0.8565, -0.054]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box252
+      scale: [0.02, 0.031, 0.008]
+      translation: [0.835, -0.7405, -0.261]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box253
+      scale: [0.04, 0.03, 0.002]
+      translation: [0.925, -0.82, -0.235]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box254
+      scale: [0.0355, 0.0265, 0.0105]
+      translation: [-0.0922, -0.8518, -0.2328]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box255
+      scale: [0.0312, 0.0252, 0.0166]
+      translation: [0.9778, -0.7724, -0.2295]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box256
+      scale: [0.0272, 0.0344, 0.0074]
+      translation: [-0.3886, -0.8122, -0.2085]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box257
+      scale: [0.003, 0.0382, 0.0284]
+      translation: [0.9555, -0.8451, 0.2372]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box258
+      scale: [0.031, 0.03, 0.003]
+      translation: [-0.2305, -0.79, -0.2125]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box259
+      scale: [0.032, 0.0352, 0.007]
+      translation: [0.03, -0.8074, -0.1995]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box260
+      scale: [0.026, 0.027, 0.013]
+      translation: [0.675, -0.9795, -0.2285]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box261
+      scale: [0.0214, 0.0266, 0.0068]
+      translation: [0.0363, -0.8917, -0.1984]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box262
+      scale: [0.03, 0.034, 0.001]
+      translation: [0.74, -0.772, -0.2655]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box263
+      scale: [0.0393, 0.03, 0.0073]
+      translation: [0.0253, -0.98, -0.2004]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box264
+      scale: [0.025, 0.0185, 0.02]
+      translation: [0.5785, -0.8813, -0.227]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box265
+      scale: [0.0334, 0.031, 0.0064]
+      translation: [0.3983, -0.8205, -0.2418]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box266
+      scale: [0.03, 0.04, 0.005]
+      translation: [-0.01, -0.735, -0.1915]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box267
+      scale: [0.032, 0.014, 0.0301]
+      translation: [0.109, -0.878, -0.169]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box268
+      scale: [0.0288, 0.02, 0.0208]
+      translation: [0.0806, -0.915, -0.197]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box269
+      scale: [0.034, 0.026, 0.008]
+      translation: [0.845, -0.702, -0.267]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box270
+      scale: [0.0244, 0.0373, 0.0047]
+      translation: [0.1615, -0.8937, -0.2123]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box271
+      scale: [0.0278, 0.0258, 0.0048]
+      translation: [0.9011, -0.9391, -0.239]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box272
+      scale: [0.0318, 0.04, 0.0294]
+      translation: [0.9791, -0.835, -0.2495]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box273
+      scale: [0.032, 0.03, 0.0022]
+      translation: [0.339, -0.75, -0.2461]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box274
+      scale: [0.003, 0.0311, 0.0391]
+      translation: [0.9575, -0.9405, 0.1154]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box275
+      scale: [0.04, 0.02, 0.003]
+      translation: [-0.395, -0.985, -0.2815]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box276
+      scale: [0.0342, 0.0386, 0.0118]
+      translation: [-0.1961, -0.8855, -0.1859]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box277
+      scale: [0.0226, 0.0238, 0.0234]
+      translation: [-0.1355, -0.8169, -0.1741]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box278
+      scale: [0.023, 0.0345, 0.015]
+      translation: [-0.066, -0.9723, -0.1935]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box279
+      scale: [0.0212, 0.024, 0.0232]
+      translation: [0.6954, -0.837, -0.2506]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box280
+      scale: [0.0186, 0.0203, 0.0249]
+      translation: [0.5157, -0.6442, -0.2278]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box281
+      scale: [0.0328, 0.0282, 0.0032]
+      translation: [0.8186, -0.9001, -0.1344]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box282
+      scale: [0.02, 0.0293, 0.0116]
+      translation: [0.855, -0.9604, -0.2408]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box283
+      scale: [0.0093, 0.0362, 0.0346]
+      translation: [0.9604, -0.8738, -0.0323]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box284
+      scale: [0.0194, 0.019, 0.0278]
+      translation: [0.8747, -0.9855, -0.2505]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box285
+      scale: [0.0252, 0.0027, 0.031]
+      translation: [0.2724, -0.9804, 0.0005]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box286
+      scale: [0.0054, 0.0384, 0.0319]
+      translation: [0.962, -0.9755, -0.0151]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box287
+      scale: [0.022, 0.0228, 0.0262]
+      translation: [0.956, -0.8146, -0.0709]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box288
+      scale: [0.0396, 0.03, 0.0026]
+      translation: [0.2812, -0.74, -0.2467]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box289
+      scale: [0.0352, 0.03, 0.0074]
+      translation: [-0.1906, -0.8, -0.2093]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box290
+      scale: [0.039, 0.002, 0.031]
+      translation: [0.4145, -0.855, -0.0905]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box291
+      scale: [0.0297, 0.0334, 0.006]
+      translation: [0.7699, -0.8817, -0.23]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box292
+      scale: [0.03, 0.034, 0.004]
+      translation: [-0.23, -0.942, -0.215]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box293
+      scale: [0.0292, 0.0425, 0.0051]
+      translation: [0.7794, -0.9737, -0.1355]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box294
+      scale: [0.033, 0.0393, 0.0066]
+      translation: [0.0385, -0.7147, -0.2]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box295
+      scale: [0.04, 0.02, 0.0081]
+      translation: [-0.125, -0.985, -0.2329]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box296
+      scale: [0.026, 0.0264, 0.014]
+      translation: [0.802, -0.9318, -0.263]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box297
+      scale: [0.0153, 0.0261, 0.0167]
+      translation: [-0.1454, -0.7501, -0.1187]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box298
+      scale: [0.0192, 0.0248, 0.0198]
+      translation: [0.7046, -0.869, -0.2399]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box299
+      scale: [0.0124, 0.0352, 0.0019]
+      translation: [0.5058, -0.9728, -0.067]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box300
+      scale: [0.002, 0.0392, 0.039]
+      translation: [0.963, -0.7945, 0.0555]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box301
+      scale: [0.032, 0.039, 0.006]
+      translation: [0.421, -0.7155, -0.247]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box302
+      scale: [0.036, 0.0396, 0.0026]
+      translation: [0.353, -0.8148, -0.2447]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box303
+      scale: [0.038, 0.0305, 0.0055]
+      translation: [-0.246, -0.8893, -0.1787]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box304
+      scale: [0.002, 0.03, 0.039]
+      translation: [0.966, -0.7118, 0.0145]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box305
+      scale: [0.0279, 0.026, 0.0265]
+      translation: [0.2011, -0.828, -0.2318]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box306
+      scale: [0.0393, 0.0323, 0.0086]
+      translation: [0.6246, -0.9821, -0.262]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box307
+      scale: [0.029, 0.0224, 0.0277]
+      translation: [0.9305, -0.9548, -0.2488]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box308
+      scale: [0.03, 0.0336, 0.006]
+      translation: [-0.02, -0.8922, -0.19]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box309
+      scale: [0.0226, 0.0248, 0.0186]
+      translation: [-0.3263, -0.829, -0.2159]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box310
+      scale: [0.0167, 0.0342, 0.0017]
+      translation: [0.5133, -0.8379, -0.0651]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box311
+      scale: [0.0328, 0.0396, 0.0158]
+      translation: [0.5754, -0.9252, -0.2629]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box312
+      scale: [0.03, 0.003, 0.04]
+      translation: [0.22, -0.8425, -0.105]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box313
+      scale: [0.027, 0.0224, 0.004]
+      translation: [0.6015, -0.7036, -0.239]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box314
+      scale: [0.0328, 0.0208, 0.0048]
+      translation: [0.5886, -0.9554, -0.1095]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box315
+      scale: [0.03, 0.0086, 0.0303]
+      translation: [0.32, -0.853, -0.0599]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box316
+      scale: [0.031, 0.024, 0.01]
+      translation: [0.7295, -0.883, -0.224]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box317
+      scale: [0.032, 0.03, 0.002]
+      translation: [0.489, -0.78, -0.243]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box318
+      scale: [0.0368, 0.0293, 0.0066]
+      translation: [-0.0599, -0.8703, -0.19]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box319
+      scale: [0.0365, 0.0215, 0.015]
+      translation: [0.4017, -0.9843, -0.0365]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box320
+      scale: [0.03, 0.03, 0.004]
+      translation: [-0.21, -0.98, -0.219]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box321
+      scale: [0.0294, 0.023, 0.0298]
+      translation: [0.1903, -0.8535, -0.0595]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box322
+      scale: [0.0234, 0.0196, 0.0169]
+      translation: [0.6864, -0.9245, -0.2341]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box323
+      scale: [0.034, 0.0195, 0.024]
+      translation: [0.252, -0.9848, 0.0385]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box324
+      scale: [0.003, 0.021, 0.04]
+      translation: [0.9605, -0.9855, 0.035]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box325
+      scale: [0.0326, 0.0216, 0.011]
+      translation: [0.2113, -0.9845, -0.0445]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box326
+      scale: [0.018, 0.03, 0.0285]
+      translation: [0.096, -0.94, -0.0558]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box327
+      scale: [0.0252, 0.028, 0.0052]
+      translation: [0.7496, -0.891, -0.1342]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box328
+      scale: [0.0306, 0.0311, 0.0042]
+      translation: [0.1203, -0.9806, -0.208]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box329
+      scale: [0.0195, 0.0175, 0.02]
+      translation: [-0.0748, -0.7172, -0.18]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box330
+      scale: [0.0021, 0.0391, 0.0291]
+      translation: [0.9579, -0.7654, 0.1996]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box331
+      scale: [0.0219, 0.0307, 0.0059]
+      translation: [-0.095, -0.9806, -0.1981]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box332
+      scale: [0.018, 0.023, 0.019]
+      translation: [-0.308, -0.8655, -0.2305]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box333
+      scale: [0.03, 0.019, 0.0178]
+      translation: [-0.29, -0.7045, -0.225]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box334
+      scale: [0.017, 0.024, 0.027]
+      translation: [0.7765, -0.673, -0.2515]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box335
+      scale: [0.0266, 0.0298, 0.0106]
+      translation: [0.0783, -0.9801, -0.2017]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box336
+      scale: [0.0022, 0.0326, 0.0402]
+      translation: [0.9529, -0.9387, 0.2149]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box337
+      scale: [0.0156, 0.0212, 0.0164]
+      translation: [0.5754, -0.7804, -0.227]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box338
+      scale: [0.038, 0.04, 0.0026]
+      translation: [0.894, -0.855, -0.2345]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box339
+      scale: [0.039, 0.0009, 0.039]
+      translation: [0.4354, -0.8556, -0.1455]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box340
+      scale: [0.027, 0.01, 0.019]
+      translation: [0.9205, -0.78, -0.0845]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box341
+      scale: [0.033, 0.005, 0.03]
+      translation: [0.2885, -0.8455, -0.21]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box342
+      scale: [0.0332, 0.0076, 0.0358]
+      translation: [0.1956, -0.8438, -0.1529]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box343
+      scale: [0.0348, 0.0178, 0.001]
+      translation: [0.4676, -0.5961, -0.2435]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box344
+      scale: [0.003, 0.039, 0.0381]
+      translation: [0.9645, -0.7954, 0.006]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box345
+      scale: [0.031, 0.0212, 0.0283]
+      translation: [0.9468, -0.7544, -0.2499]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box346
+      scale: [0.031, 0.002, 0.031]
+      translation: [0.3005, -0.847, -0.1295]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box347
+      scale: [0.0228, 0.0304, 0.0102]
+      translation: [-0.3024, -0.8802, -0.1721]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box348
+      scale: [0.0418, 0.0262, 0.0092]
+      translation: [0.7699, -0.8121, -0.2614]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box349
+      scale: [0.0289, 0.0301, 0.0041]
+      translation: [-0.3975, -0.939, -0.248]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box350
+      scale: [0.03, 0.028, 0.003]
+      translation: [-0.11, -0.915, -0.2345]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box351
+      scale: [0.033, 0.03, 0.0033]
+      translation: [0.9085, -0.93, -0.2657]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box352
+      scale: [0.038, 0.036, 0.0018]
+      translation: [0.416, -0.905, -0.0431]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box353
+      scale: [0.0398, 0.03, 0.0048]
+      translation: [0.9749, -0.88, -0.2674]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box354
+      scale: [0.002, 0.032, 0.0312]
+      translation: [0.964, -0.721, 0.0686]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box355
+      scale: [0.0224, 0.0298, 0.0198]
+      translation: [0.2336, -0.9101, -0.0345]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box356
+      scale: [0.039, 0.0261, 0.0217]
+      translation: [0.4445, -0.8389, -0.2311]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box357
+      scale: [0.0285, 0.011, 0.0445]
+      translation: [0.4793, -0.8555, -0.1982]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box358
+      scale: [0.001, 0.0281, 0.0392]
+      translation: [0.9645, -0.631, 0.0946]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box359
+      scale: [0.0212, 0.0222, 0.0168]
+      translation: [0.6374, -0.8135, -0.2458]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box360
+      scale: [0.0234, 0.021, 0.0251]
+      translation: [0.6254, -0.9055, -0.2215]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box361
+      scale: [0.03, 0.036, 0.01]
+      translation: [0.98, -0.787, -0.261]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box362
+      scale: [0.0278, 0.0238, 0.0234]
+      translation: [0.7905, -0.8441, -0.2477]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box363
+      scale: [0.04, 0.03, 0.002]
+      translation: [0.855, -0.9, -0.265]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box364
+      scale: [0.022, 0.0292, 0.0132]
+      translation: [-0.0932, -0.8906, -0.1936]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box365
+      scale: [0.031, 0.0255, 0.007]
+      translation: [0.9705, -0.9523, -0.2385]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box366
+      scale: [0.023, 0.0362, 0.0032]
+      translation: [0.1265, -0.8969, -0.0406]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box367
+      scale: [0.03, 0.0304, 0.0184]
+      translation: [0.29, -0.964, -0.0338]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box368
+      scale: [0.0264, 0.0322, 0.0048]
+      translation: [0.7128, -0.9793, -0.1384]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box369
+      scale: [0.0196, 0.0178, 0.0264]
+      translation: [0.116, -0.8631, -0.2204]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box370
+      scale: [0.0268, 0.0172, 0.0228]
+      translation: [0.697, -0.8844, -0.12]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box371
+      scale: [0.04, 0.04, 0.004]
+      translation: [-0.305, -0.745, -0.215]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box372
+      scale: [0.0282, 0.0258, 0.0136]
+      translation: [0.5495, -0.8979, -0.2062]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box373
+      scale: [0.0289, 0.0189, 0.0172]
+      translation: [0.1496, -0.8644, -0.2344]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box374
+      scale: [0.0171, 0.0246, 0.0232]
+      translation: [0.4064, -0.6609, -0.1034]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box375
+      scale: [0.027, 0.0107, 0.0297]
+      translation: [0.4785, -0.8623, -0.0601]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box376
+      scale: [0.003, 0.031, 0.0387]
+      translation: [0.9585, -0.8995, 0.1053]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box377
+      scale: [0.0287, 0.0227, 0.0209]
+      translation: [0.2565, -0.8813, -0.0318]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box378
+      scale: [0.031, 0.0328, 0.0082]
+      translation: [0.7295, -0.9414, -0.2619]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box379
+      scale: [0.037, 0.037, 0.0044]
+      translation: [0.9365, -0.9035, -0.2365]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box380
+      scale: [0.026, 0.029, 0.0142]
+      translation: [0.372, -0.9513, -0.0367]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box381
+      scale: [0.0309, 0.0263, 0.005]
+      translation: [0.9495, -0.7519, -0.0855]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box382
+      scale: [0.0287, 0.0285, 0.0225]
+      translation: [-0.3876, -0.8514, -0.2295]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box383
+      scale: [0.0212, 0.0312, 0.0058]
+      translation: [-0.3556, -0.8106, -0.2109]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box384
+      scale: [0.029, 0.029, 0.007]
+      translation: [0.0695, -0.6705, -0.2075]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box385
+      scale: [0.0286, 0.0279, 0.029]
+      translation: [0.8807, -0.8111, -0.2495]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box386
+      scale: [0.0297, 0.0267, 0.0142]
+      translation: [-0.2298, -0.8314, -0.2151]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box387
+      scale: [0.0269, 0.0315, 0.01]
+      translation: [-0.0892, -0.7708, -0.206]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box388
+      scale: [0.0383, 0.0101, 0.0161]
+      translation: [-0.185, -0.8309, -0.243]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box389
+      scale: [0.003, 0.0309, 0.0295]
+      translation: [0.9605, -0.8896, 0.0598]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box390
+      scale: [0.0289, 0.0208, 0.019]
+      translation: [0.4205, -0.6255, -0.2345]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box391
+      scale: [0.0295, 0.03, 0.005]
+      translation: [-0.1502, -0.92, -0.228]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box392
+      scale: [0.03, 0.03, 0.004]
+      translation: [0.83, -0.92, -0.238]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box393
+      scale: [0.0226, 0.019, 0.0214]
+      translation: [0.5939, -0.7565, -0.2231]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box394
+      scale: [0.04, 0.02, 0.02]
+      translation: [0.975, -0.985, -0.245]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box395
+      scale: [0.003, 0.0304, 0.03]
+      translation: [0.9555, -0.91, 0.19]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box396
+      scale: [0.0075, 0.028, 0.02]
+      translation: [0.4008, -0.65, -0.185]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box397
+      scale: [0.02, 0.029, 0.014]
+      translation: [0.785, -0.9695, -0.263]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box398
+      scale: [0.0306, 0.0304, 0.004]
+      translation: [0.7303, -0.8098, -0.241]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box399
+      scale: [0.03, 0.0031, 0.04]
+      translation: [0.39, -0.8525, -0.175]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box400
+      scale: [0.0239, 0.03, 0.0049]
+      translation: [-0.0469, -0.83, -0.1915]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box401
+      scale: [0.0255, 0.0345, 0.0045]
+      translation: [0.9027, -0.9728, -0.2658]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box402
+      scale: [0.0383, 0.014, 0.0039]
+      translation: [0.2079, -0.992, 0.049]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box403
+      scale: [0.03, 0.028, 0.028]
+      translation: [0.67, -0.801, -0.252]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box404
+      scale: [0.0224, 0.0064, 0.0168]
+      translation: [-0.1048, -0.7094, -0.1514]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box405
+      scale: [0.004, 0.0273, 0.0384]
+      translation: [0.09, -0.9114, -0.1545]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box406
+      scale: [0.0188, 0.0222, 0.002]
+      translation: [-0.4128, -0.8441, -0.28]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box407
+      scale: [0.031, 0.032, 0.0032]
+      translation: [0.8685, -0.941, -0.2654]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box408
+      scale: [0.03, 0.03, 0.004]
+      translation: [0.02, -0.87, -0.196]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box409
+      scale: [0.0218, 0.0024, 0.0388]
+      translation: [0.1419, -0.8742, -0.1556]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box410
+      scale: [0.0235, 0.0254, 0.0048]
+      translation: [0.8232, -0.8723, -0.2346]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box411
+      scale: [0.03, 0.0319, 0.0021]
+      translation: [0.27, -0.79, -0.246]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box412
+      scale: [0.0276, 0.0308, 0.005]
+      translation: [0.0788, -0.7495, -0.2075]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box413
+      scale: [0.0289, 0.0381, 0.0029]
+      translation: [-0.3095, -0.9141, -0.2036]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box414
+      scale: [0.0223, 0.0222, 0.0043]
+      translation: [0.7639, -0.9518, -0.2401]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box415
+      scale: [0.0291, 0.026, 0.0037]
+      translation: [-0.2804, -0.782, -0.2102]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box416
+      scale: [0.003, 0.0301, 0.0392]
+      translation: [0.9545, -0.9799, 0.1755]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box417
+      scale: [0.0027, 0.0297, 0.0385]
+      translation: [0.9604, -0.9199, 0.0257]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box418
+      scale: [0.0292, 0.0274, 0.006]
+      translation: [0.3504, -0.6733, -0.243]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box419
+      scale: [0.029, 0.0303, 0.002]
+      translation: [-0.4095, -0.9102, -0.282]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box420
+      scale: [0.032, 0.0196, 0.009]
+      translation: [0.6636, -0.755, -0.2375]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box421
+      scale: [0.035, 0.031, 0.002]
+      translation: [0.8725, -0.9795, -0.138]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box422
+      scale: [0.0258, 0.0296, 0.005]
+      translation: [-0.1667, -0.7298, -0.2195]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box423
+      scale: [0.022, 0.024, 0.004]
+      translation: [-0.384, -0.737, -0.211]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box424
+      scale: [0.0211, 0.0255, 0.0094]
+      translation: [0.5445, -0.6525, -0.2373]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box425
+      scale: [0.0158, 0.0214, 0.0274]
+      translation: [0.8315, -0.9557, -0.2517]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box426
+      scale: [0.0384, 0.03, 0.0154]
+      translation: [-0.0758, -0.98, -0.2313]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box427
+      scale: [0.027, 0.037, 0.005]
+      translation: [0.9815, -0.8765, -0.2375]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box428
+      scale: [0.0208, 0.02, 0.0264]
+      translation: [0.6764, -0.865, -0.2482]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box429
+      scale: [0.03, 0.0306, 0.0202]
+      translation: [0.117, -0.8297, -0.2135]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box430
+      scale: [0.0308, 0.03, 0.0136]
+      translation: [-0.0541, -0.75, -0.1948]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box431
+      scale: [0.035, 0.031, 0.006]
+      translation: [0.8065, -0.9405, -0.133]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box432
+      scale: [0.027, 0.0297, 0.002]
+      translation: [-0.3715, -0.8699, -0.281]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box433
+      scale: [0.0346, 0.0294, 0.0084]
+      translation: [0.2277, -0.9497, -0.0422]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box434
+      scale: [0.0064, 0.0382, 0.0297]
+      translation: [0.0925, -0.8941, -0.0898]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box435
+      scale: [0.0251, 0.02, 0.0071]
+      translation: [0.6379, -0.845, -0.2382]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box436
+      scale: [0.003, 0.03, 0.037]
+      translation: [0.9585, -0.8, 0.1465]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box437
+      scale: [0.0394, 0.02, 0.0122]
+      translation: [0.3147, -0.925, -0.0369]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box438
+      scale: [0.003, 0.0301, 0.0373]
+      translation: [0.9595, -0.8099, 0.0945]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box439
+      scale: [0.03, 0.0329, 0.012]
+      translation: [0.36, -0.8685, -0.049]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box440
+      scale: [0.0285, 0.0295, 0.005]
+      translation: [0.8293, -0.7802, -0.2615]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box441
+      scale: [0.037, 0.037, 0.002]
+      translation: [0.4655, -0.9345, -0.044]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box442
+      scale: [0.0352, 0.04, 0.0057]
+      translation: [-0.2126, -0.975, -0.1829]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box443
+      scale: [0.0186, 0.023, 0.029]
+      translation: [-0.1317, -0.8289, -0.1405]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box444
+      scale: [0.0212, 0.0196, 0.0286]
+      translation: [0.6563, -0.9545, -0.2307]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box445
+      scale: [0.02, 0.0304, 0.0098]
+      translation: [0.645, -0.8794, -0.2339]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box446
+      scale: [0.019, 0.0183, 0.0262]
+      translation: [-0.0655, -0.7141, -0.2295]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box447
+      scale: [0.037, 0.03, 0.0057]
+      translation: [-0.2565, -0.9, -0.2108]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box448
+      scale: [0.0308, 0.0294, 0.007]
+      translation: [-0.1696, -0.9803, -0.2265]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box449
+      scale: [0.0284, 0.0147, 0.0157]
+      translation: [-0.3198, -0.8243, -0.2732]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box450
+      scale: [0.027, 0.038, 0.0066]
+      translation: [-0.0085, -0.6858, -0.1925]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box451
+      scale: [0.0356, 0.0296, 0.005]
+      translation: [0.1532, -0.9402, -0.2125]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box452
+      scale: [0.03, 0.0179, 0.0311]
+      translation: [0.44, -0.8649, -0.0576]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box453
+      scale: [0.0303, 0.0401, 0.0103]
+      translation: [0.392, -0.6651, -0.2399]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box454
+      scale: [0.0296, 0.039, 0.0033]
+      translation: [-0.1895, -0.9345, -0.1856]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box455
+      scale: [0.03, 0.03, 0.006]
+      translation: [0.59, -0.94, -0.199]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box456
+      scale: [0.0304, 0.0271, 0.0111]
+      translation: [0.6459, -0.9385, -0.1365]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box457
+      scale: [0.0283, 0.0305, 0.0163]
+      translation: [0.5109, -0.846, -0.2339]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box458
+      scale: [0.0364, 0.03, 0.0058]
+      translation: [0.8342, -0.86, -0.2605]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box459
+      scale: [0.0021, 0.039, 0.031]
+      translation: [0.962, -0.7145, 0.1095]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box460
+      scale: [0.0013, 0.029, 0.0393]
+      translation: [0.9564, -0.9805, 0.1246]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box461
+      scale: [0.02, 0.0285, 0.0218]
+      translation: [0.699, -0.9426, -0.241]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box462
+      scale: [0.0261, 0.0292, 0.016]
+      translation: [-0.098, -0.6934, -0.235]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box463
+      scale: [0.032, 0.032, 0.0014]
+      translation: [0.409, -0.779, -0.2445]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box464
+      scale: [0.02, 0.0319, 0.002]
+      translation: [-0.415, -0.9599, -0.281]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box465
+      scale: [0.0283, 0.0297, 0.013]
+      translation: [0.7685, -0.8801, -0.2605]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box466
+      scale: [0.0201, 0.0201, 0.0224]
+      translation: [-0.295, -0.826, -0.2162]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box467
+      scale: [0.026, 0.0134, 0.0224]
+      translation: [0.4144, -0.6299, -0.1638]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box468
+      scale: [0.0296, 0.0227, 0.013]
+      translation: [0.5699, -0.8244, -0.2255]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box469
+      scale: [0.0293, 0.0267, 0.006]
+      translation: [0.7704, -0.7347, -0.262]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box470
+      scale: [0.03, 0.002, 0.0301]
+      translation: [0.35, -0.85, -0.1399]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box471
+      scale: [0.04, 0.03, 0.002]
+      translation: [0.925, -0.78, -0.235]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box472
+      scale: [0.002, 0.0317, 0.0357]
+      translation: [0.952, -0.9401, 0.2639]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box473
+      scale: [0.027, 0.0285, 0.0085]
+      translation: [0.8015, -0.9008, -0.2343]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box474
+      scale: [0.03, 0.0248, 0.003]
+      translation: [-0.4, -0.8304, -0.2815]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box475
+      scale: [0.0254, 0.0256, 0.003]
+      translation: [-0.1321, -0.7382, -0.2195]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box476
+      scale: [0.0014, 0.0336, 0.03]
+      translation: [0.9667, -0.6682, 0.01]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box477
+      scale: [0.0013, 0.0353, 0.0183]
+      translation: [0.9693, -0.6611, -0.0514]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box478
+      scale: [0.028, 0.0266, 0.0116]
+      translation: [0.6345, -0.9773, -0.2135]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box479
+      scale: [0.0031, 0.0301, 0.0381]
+      translation: [0.0856, -0.98, -0.1249]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box480
+      scale: [0.029, 0.028, 0.0077]
+      translation: [0.7105, -0.9817, -0.2591]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box481
+      scale: [0.03, 0.0392, 0.0032]
+      translation: [0.98, -0.9246, -0.2674]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box482
+      scale: [0.029, 0.033, 0.0023]
+      translation: [0.7695, -0.9315, -0.2671]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box483
+      scale: [0.0236, 0.02, 0.012]
+      translation: [0.4256, -0.635, -0.099]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box484
+      scale: [0.0303, 0.0193, 0.0133]
+      translation: [0.7198, -0.9864, -0.2354]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box485
+      scale: [0.0204, 0.0208, 0.0204]
+      translation: [0.3352, -0.9844, 0.0412]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box486
+      scale: [0.0204, 0.0111, 0.018]
+      translation: [0.8952, -0.9906, -0.245]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box487
+      scale: [0.028, 0.0284, 0.004]
+      translation: [-0.209, -0.9106, -0.219]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box488
+      scale: [0.0272, 0.021, 0.0071]
+      translation: [0.8515, -0.8546, -0.2315]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box489
+      scale: [0.026, 0.0264, 0.018]
+      translation: [0.728, -0.7322, -0.257]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box490
+      scale: [0.03, 0.04, 0.005]
+      translation: [0.0, -0.935, -0.1955]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box491
+      scale: [0.0246, 0.0248, 0.0163]
+      translation: [0.702, -0.8974, -0.2549]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box492
+      scale: [0.039, 0.003, 0.029]
+      translation: [0.2545, -0.8445, -0.1395]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box493
+      scale: [0.0029, 0.0389, 0.0309]
+      translation: [0.9665, -0.7555, -0.0404]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box494
+      scale: [0.024, 0.0282, 0.0126]
+      translation: [-0.0646, -0.9119, -0.1935]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box495
+      scale: [0.02, 0.0196, 0.027]
+      translation: [0.845, -0.9852, -0.2495]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box496
+      scale: [0.03, 0.025, 0.003]
+      translation: [0.23, -0.8075, -0.2465]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box497
+      scale: [0.02, 0.0293, 0.0151]
+      translation: [0.095, -0.8797, -0.1997]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box498
+      scale: [0.0222, 0.02, 0.0138]
+      translation: [0.0761, -0.945, -0.2001]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box499
+      scale: [0.0323, 0.0252, 0.0052]
+      translation: [-0.2182, -0.7324, -0.217]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
+    - name: box500
+      scale: [0.0231, 0.0198, 0.0198]
+      translation: [-0.3391, -0.886, -0.235]
+      rotation: [0.0, 0.0, 0.0]
+      animation: static
