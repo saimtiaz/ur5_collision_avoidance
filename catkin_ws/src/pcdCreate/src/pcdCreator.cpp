@@ -70,6 +70,7 @@ static const std::string QUIT_TOPIC = "/quitScan";
 //Global state variables
 bool getNextScan = true;
 static float scanCount = 0;
+static float armRadius = 1.0;
 
 
 void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
@@ -97,12 +98,12 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
 
       //Filter out values outside of the arm radius
       pcl::ConditionAnd<pcl::PointXYZ>::Ptr range_cond (new pcl::ConditionAnd<pcl::PointXYZ> ());
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::GT, -1.1)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::LT, 1.1)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::GT, -1.1)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::LT, 1.1)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::GT, -1.1)));
-      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::LT, 1.1)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::GT, -armRadius)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::LT, armRadius)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::GT, -armRadius)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("y", pcl::ComparisonOps::LT, armRadius)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::GT, -armRadius)));
+      range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("z", pcl::ComparisonOps::LT, armRadius)));
       // build the filter
       pcl::ConditionalRemoval<pcl::PointXYZ> condrem;
       condrem.setCondition (range_cond);
@@ -120,7 +121,7 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
       vg.filter (*cloud_filtered2);
 
       //Save file
-      pcl::io::savePCDFileASCII (fileName, *cloud_filtered); 
+      pcl::io::savePCDFileASCII (fileName, *cloud_filtered2); 
 
       //Print that the scan is complete
       ROS_INFO_STREAM("Scan complete");
