@@ -366,7 +366,7 @@ if __name__ == "__main__":
         filterToc = time.perf_counter()
         print("Size of cluster after filtering: ", len(filteredCluster[0]))
         kmeansTic = time.perf_counter()
-        kObjects = cluster2objKMEANS(megaCluster, numCluster = 300)
+        kObjects = cluster2objKMeans(cluster, numCluster = 12, minPercentile = 3, maxPercentile = 97, branchLevel = 2)
         kmeansToc = time.perf_counter()
         
         for object in kObjects:
@@ -384,7 +384,7 @@ if __name__ == "__main__":
                 fullFileName = os.path.join(pointCloudDir, file)
                 cluster = pcd2cluster(fullFileName)
                 #rotCluster = rotateCluster(cluster)
-                kObjects = cluster2objKMEANS(cluster, numCluster = 200)
+                kObjects = cluster2objKMeans(cluster, numCluster = 12, minPercentile = 3, maxPercentile = 97, branchLevel = 2)
                 #obj = cluster2obj(cluster)
                 for object in kObjects:
                     objList.append(object)
