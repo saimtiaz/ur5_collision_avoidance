@@ -95,8 +95,8 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
       std::string fileExt = ".pcd";
       std::string fileName= dir + std::to_string(scanCount) + fileExt; 
 
-
-      //Filter out values outside of the arm radius
+//TODO -> test arm radius filter
+ /*      //Filter out values outside of the arm radius
       pcl::ConditionAnd<pcl::PointXYZ>::Ptr range_cond (new pcl::ConditionAnd<pcl::PointXYZ> ());
       range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::GT, -armRadius)));
       range_cond->addComparison (pcl::FieldComparison<pcl::PointXYZ>::ConstPtr (new pcl::FieldComparison<pcl::PointXYZ> ("x", pcl::ComparisonOps::LT, armRadius)));
@@ -111,13 +111,13 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
       condrem.setKeepOrganized(true);
       // apply filter
       pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZ>);
-      condrem.filter(*cloud_filtered);
+      condrem.filter(*cloud_filtered); */
 
-      //Downsample the dataset using a leaf size of 5mm
+      //Downsample the dataset using a leaf size of 2.5mm/0.1inch
       pcl::VoxelGrid<pcl::PointXYZ> vg;
       pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered2 (new pcl::PointCloud<pcl::PointXYZ>);
-      vg.setInputCloud (cloud_filtered);
-      vg.setLeafSize (0.005f, 0.005f, 0.005f);
+      vg.setInputCloud (temp_cloud);
+      vg.setLeafSize (0.0025f, 0.0025f, 0.0025f);
       vg.filter (*cloud_filtered2);
 
       //Save file
