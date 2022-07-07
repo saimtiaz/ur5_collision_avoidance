@@ -1,8 +1,9 @@
 #! /usr/bin/env python
 import os
 import numpy as np
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, MiniBatchKMeans
 import math
+
 import clusterViz as clusViz
 
 #TODO Remove when submitting final project
@@ -25,7 +26,7 @@ def objWriter(objects, settingsFileName = "settings.yaml"):
             cuboids.append(object)
 
     #Remove existing settings.yaml
-    settingsFileName = "/home/simtiaz/ur5_collision_avoidance/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
+    #settingsFileName = "/home/simtiaz/ur5_collision_avoidance/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
     #settingsFileName = "/home/simtiaz/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml"
     #settingsFileName = "..\\..\\..\\..\\settingmisc\\settings.yaml"
 
@@ -117,8 +118,8 @@ def pcd2cluster(fileName):
     return cluster
 
 def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
-    clusViz.boxViz(cluster)
-    clusViz.cubeVsSphereViz(cluster)
+    #clusViz.boxViz(cluster)
+    #clusViz.cubeVsSphereViz(cluster)
     roundingFactor = 5
     makeCubes = True
     xS = cluster[0]
@@ -154,8 +155,8 @@ def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
                 'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans , yTrans, zTrans]}
         return sphere
 
-def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1):
-    clusViz.fullBoxViz(cluster)
+def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1, method = 0, batch_size = 0):
+    #clusViz.fullBoxViz(cluster)
     kClustersOld = [cluster]
     kClusters = []
     objList = []
@@ -163,7 +164,7 @@ def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 9
     while branchLevel > 0:
         while len(kClustersOld) > 0:
             currCluster = kClustersOld.pop()
-            newClusters = kMeansClustering(currCluster, numCluster)
+            newClusters = kMeansClustering(currCluster, numCluster, method = method, batch_size= batch_size)
             kClusters += newClusters
         branchLevel = branchLevel - 1
         kClustersOld = kClusters
@@ -177,11 +178,18 @@ def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 9
 
     return objList
     
-def kMeansClustering(cluster, numCluster):
+def kMeansClustering(cluster, numCluster, method = 0, batch_size = 0):
     X = np.column_stack((cluster[0], cluster[1], cluster[2]))
 
     #Could use metrics such as wcss, sihouette, or volume minimize
-    kmeans = KMeans(n_clusters = numCluster).fit(X)
+    kmeans = None
+    if method == 0:
+        kmeans = KMeans(n_clusters = numCluster).fit(X)
+    elif method == 1:
+        kmeans = MiniBatchKMeans(n_clusters=numCluster, batch_size=batch_size).fit(X)
+    elif method == 2:
+        #kmeans = BisectingKMeans(n_clusters=numCluster)
+    
     kClusters = []
 
     for i in range(0, numCluster):
@@ -192,120 +200,6 @@ def kMeansClustering(cluster, numCluster):
         kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
     return kClusters
 
-
-
-# def cluster2objKMEANS(cluster, numCluster, minPercentile = 10, maxPercentile = 90):
-#     X = np.column_stack((cluster[0], cluster[1], cluster[2]))
-
-#     print("KMEANS TIME")
-#     #Could use metrics such as wcss, sihouette, or volume minimize
-#     kmeans = KMeans(n_clusters = numCluster).fit(X)
-#     objList = []
-#     kClusters = []
-
-#     for i in range(0, numCluster):
-#         kClusters.append([[],[],[]])
-#     for i in range(0, len(kmeans.labels_)):
-#         kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
-#         kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
-#         kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
-#     for i in range(0, numCluster):
-#         objList.append(cluster2obj(kClusters[i], minPercentile, maxPercentile))
-
-#     return objList
-
-def rotateCluster(cluster):
-    return cluster
-    #TODO remove this code as it should not be necessary
-    # The point cloud should be automatically rotated 
-    print('Starting rotation')
-    qw= 0.6760704112311099
-    qx= -0.10048774764081572
-    qy= 0.004741109455629532
-    qz= 0.7299373490327808
-    x= 0.03523307719392562
-    y= -1.4418668889585609
-    z= 0.6256011107718419
-
-    transMatrix = quaternion_matrix([qx, qy, qz, qw])
-
-    secondTransMatrix = quaternion_matrix([0, -0.7071068, 0, 0.7071068])
-
-
-    
-    #Q = [qw, qx, qy, qz]
-    Trans = [x, y, z]
-    print(transMatrix)
-    transMatrix[0:3, 3] = Trans
-    print(transMatrix)
-
-
-    allZ = [x * -1 for x in cluster[0]]
-    allX = cluster[1]
-    allY = [x * -1 for x in cluster[2]]
-
-
-    
-
-
-    #rot = quaternion_rotation_matrix(Q)
-    
-
-    #rot = np.linalg.inv(rot)
-    #transMatrix = np.identity(4)
-   # transMatrix[0:3, 0:3] = rot
-   # transMatrix[0:3, 3] = Trans
-    #print(transMatrix)
-    print('Transformation Matrix Formed')
-    points = np.zeros((len(allX), 4))
-
-
-    points[:,0] = allX
-    points[:,1] = allY
-    points[:,2] = allZ
-    points[:,3] = 1
-
-    # sel = np.random.choice(points.shape[0], size = 10000, replace = False)
-    # print(sel)
-    # condensePoints = points[sel]
-
-    # points = condensePoints
-
-    print('Finish creating np points')
-    transformedPoints = np.dot(points, transMatrix)
-    transformedPoints[:,0] = transformedPoints[:,0] + x
-    transformedPoints[:,1] = transformedPoints[:,1] + y
-    transformedPoints[:,2] = transformedPoints[:,2] + z
-    transformedPoints = np.dot(points, secondTransMatrix)
-
-    transformedPoints = np.delete(transformedPoints, 0, axis=0)
-    
-
-    # allX = points[:,0] 
-    # allY = points[:,1] 
-    # allZ = points[:,2] 
-    transX = transformedPoints[:,0] #+ x
-    transY = transformedPoints[:,1] #+ y
-    transZ = transformedPoints[:,2] #+ z
-    rotCluster = [transX, transY, transZ]
-
-    # fig = plt.figure(figsize=(4,4))
-    # ax = fig.add_subplot(111, projection = '3d')
-
-    # ax.scatter(allX, allY, allZ, marker = 'x')
-    # ax.set_xlabel('x')
-    # ax.set_ylabel('y')
-    # ax.set_zlabel('z')
-    # ax.scatter(transX, transY, transZ, marker = '+')
-    # ax.plot([0],[0],[0], marker = 'o')
-    # plt.show()
-
-
-    print('Done rotation')
-    return rotCluster
-    #return cluster
-
-
 def addCluster(fullCluster, cluster):
 
     xS = fullCluster[0] + cluster[0]
@@ -315,80 +209,105 @@ def addCluster(fullCluster, cluster):
     newFullCluster = [xS, yS, zS]
     return newFullCluster
 
-def filterCluster(rawCluster, leafSize):
-    filteredX = [round(((round(x/leafSize)) * leafSize), 8) for x in rawCluster[0]]
-    filteredY = [round(((round(y/leafSize)) * leafSize), 8) for y in rawCluster[1]]
-    filteredZ = [round(((round(z/leafSize)) * leafSize), 8) for z in rawCluster[2]]
-    
-    filteredTuples = list(zip(filteredX, filteredY, filteredZ))
-    filteredTuples = removeDuplicates(filteredTuples)
-    filteredTuples = removeOutOfRange(filteredTuples)
+def range_filter(rawCluster, radius = 1.0):
+
+    filteredTuples = list(zip(rawCluster[0], rawCluster[1], rawCluster[2]))
+    filteredTuples = [x for x in filteredTuples if abs(x[0]) < radius and abs(x[1]) < radius and abs(x[2]) < radius]
 
     xS = [x[0] for x in filteredTuples]
     yS = [x[1] for x in filteredTuples]
     zS = [x[2] for x in filteredTuples]
-
-    #Convert tuples back to list
-    filterCluster = [xS, yS, zS]
-    return filterCluster
-
-def removeOutOfRange(filteredTuples):
-    filtered = [x for x in filteredTuples if abs(x[0]) < 1.0 and abs(x[1]) < 1.0 and abs(x[2]) < 1.0]
-    return filtered
-
-def removeDuplicates(lst):
-      
-    return list(set([i for i in lst]))
-
-
+    return [xS, yS, zS]
 
 if __name__ == "__main__":
 
-    pointCloudDir = '/home/simtiaz/ur5_collision_avoidance/catkin_ws/pointCloudDir/'
-    #pointCloudDir = '..\\..\\..\\..\\pointClouds' THE WINDOWS POINT CLOUD DIRECTORY
+    ##PARAMETERS
 
-    fileList = os.listdir(pointCloudDir)
-    objList = []
-    fullScan = True
-    if fullScan:
-        megaCluster = [[], [], []]
-        clusterTic = time.perf_counter()
-        for file in fileList:
-            if (file.endswith(".pcd")):
-                fullFileName = os.path.join(pointCloudDir, file)
-                cluster = pcd2cluster(fullFileName)
-                megaCluster = addCluster(megaCluster, cluster)
-        clusterToc = time.perf_counter()
-        print("Size of the cluster before filtering: ", len(megaCluster[0]))
-        filterTic = time.perf_counter()
-        filteredCluster = filterCluster(megaCluster, 0.005)
-        #filteredCluster = megaCluster
-        filterToc = time.perf_counter()
-        print("Size of cluster after filtering: ", len(filteredCluster[0]))
-        kmeansTic = time.perf_counter()
-        kObjects = cluster2objKMeans(cluster, numCluster = 12, minPercentile = 3, maxPercentile = 97, branchLevel = 2)
-        kmeansToc = time.perf_counter()
-        
-        for object in kObjects:
-            objList.append(object)
-       
+    #Directory and file locations
+    is_windows = True
 
+    linux_point_cloud_dir = '/home/simtiaz/ur5_collision_avoidance/catkin_ws/pointCloudDir/'
+    windows_point_cloud_dir = '..\\..\\..\\..\\pointClouds'
+    point_cloud_dir = None
 
-        print(f"Combined all the point cloud data in {clusterToc - clusterTic:0.4f} seconds")
-        print(f"Filtered the clusters in {filterToc - filterTic:0.4f} seconds")
-        print(f"Seperated the clusters using kmeans in {kmeansToc - kmeansTic:0.4f} seconds")
-        
+    linux_cik_setting_name = '/home/simtiaz/ur5_collision_avoidance/catkin_ws/src/relaxed_ik_ros1/relaxed_ik_core/config/settings.yaml'
+    window_cik_setting_name = 'settings.yaml'
+    cik_setting_name = None
+
+    if is_windows:
+        point_cloud_dir = windows_point_cloud_dir
+        cik_setting_name = window_cik_setting_name
     else:
-        for file in fileList:
-            if (file.endswith(".pcd")):
-                fullFileName = os.path.join(pointCloudDir, file)
-                cluster = pcd2cluster(fullFileName)
-                #rotCluster = rotateCluster(cluster)
-                kObjects = cluster2objKMeans(cluster, numCluster = 12, minPercentile = 3, maxPercentile = 97, branchLevel = 2)
-                #obj = cluster2obj(cluster)
-                for object in kObjects:
-                    objList.append(object)
+        point_cloud_dir = linux_point_cloud_dir
+        cik_setting_name = linux_cik_setting_name
+    
+
+    #Filter parameters
+    min_percentile = 3
+    max_percentile = 97
+    point_cloud_radius = 1.0
+
+    #The total number of clusters is clusterSplit**branchLevel 
+    #KMeans parameters
+    run_standard = False
+    cluster_split = 12
+    branch_level = 2
+    total_clusters = cluster_split ** branch_level
+
+    #Can either be kmeans++ or random
+    init_method = 'kmeans++'
+
+    #Mini-batch Parameters
+    #TODO study and implement mini_batch, online mini_batching, and bisecting kmeans
+    run_mini_batch = True
+    num_cores = 8
+    #Batch size is ideally at least greater than 256 * number of cores on your machine
+    batch_size = 256 * num_cores
+    #Control early stopping based on number of iterations that inertia does not improve
+    #TODO explore how this impacts run time
+    max_num_improvement = 10
+
+    #Bisecting K-means parameters
+    #Number of iterations at each bisection
+    run_bisection = False
+    max_iter = 300
+
+    #Keep track of runtime
     writeTic = time.perf_counter()
-    objWriter(objList)
+
+    ##Point Cloud File Processing
+    file_list = os.listdir(point_cloud_dir)
+    mega_cluster = [[], [], []]
+
+    #Append each point cloud file
+    for file in file_list:
+        if(file.endswith(".pcd")):
+            full_file_name = os.path.join(point_cloud_dir, file)
+            cluster = pcd2cluster(full_file_name)
+            mega_cluster = addCluster(mega_cluster, cluster)
+    
+    ##Range Filtering
+    print("Size of the cluster before range filtering: ", len(mega_cluster[0]))
+    mega_cluster = range_filter(mega_cluster, point_cloud_radius)
+    print("Size of the cluster after range filtering: ", len(mega_cluster[0]))
+
+    ##KMeans object extraction
+    kmeans_method = 0
+    if run_standard:
+        kmeans_method = 0
+        n_clusters = cluster_split
+    elif run_mini_batch:
+        kmeans_method = 1
+        n_clusters = cluster_split ** branch_level
+        branch_level = 1
+    elif run_bisection:
+        kmeans_method = 2
+
+    obj_list = cluster2objKMeans(mega_cluster, numCluster=n_clusters, minPercentile=min_percentile, maxPercentile=max_percentile, branchLevel=branch_level, method = kmeans_method, batch_size=batch_size)
+
+    ##Write objects to settings file
+    objWriter(obj_list, settingsFileName = cik_setting_name)
+
+    #Calculate total runtime
     writeToc = time.perf_counter()
-    print(f"Wrote the objects to CIK in {writeToc - writeTic:0.4f} seconds")
+    print(f"Extracted the objects to CIK in {writeToc - writeTic:0.4f} seconds")
