@@ -3,6 +3,7 @@ import os
 import numpy as np
 from sklearn.cluster import KMeans
 import math
+import clusterViz as clusViz
 
 #TODO Remove when submitting final project
 import random
@@ -116,6 +117,8 @@ def pcd2cluster(fileName):
     return cluster
 
 def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
+    clusViz.boxViz(cluster)
+    clusViz.cubeVsSphereViz(cluster)
     roundingFactor = 5
     makeCubes = True
     xS = cluster[0]
@@ -152,6 +155,7 @@ def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
         return sphere
 
 def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1):
+    clusViz.fullBoxViz(cluster)
     kClustersOld = [cluster]
     kClusters = []
     objList = []
@@ -329,7 +333,7 @@ def filterCluster(rawCluster, leafSize):
     return filterCluster
 
 def removeOutOfRange(filteredTuples):
-    filtered = [x for x in filteredTuples if abs(x[0]) < 1 and abs(x[1]) < 1 and abs(x[2]) < 1]
+    filtered = [x for x in filteredTuples if abs(x[0]) < 1.0 and abs(x[1]) < 1.0 and abs(x[2]) < 1.0]
     return filtered
 
 def removeDuplicates(lst):
