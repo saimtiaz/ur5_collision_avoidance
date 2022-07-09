@@ -70,7 +70,7 @@ def cubeVsSphereTime(cluster):
         [20, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728],
         [16, 81, 256, 625, 1296]
     ]
-    for coreBranchLevel in range(2, 5):
+    for coreBranchLevel in range(2, 3):
         clusterNums = []
         timeCube = []
         currColor = color[coreBranchLevel - 1]
@@ -118,8 +118,100 @@ def cubeVsSphereTime(cluster):
     plt.legend()
     plt.show()
 
+def isPointInBox(x, y, z, obj):
+    xPair = [obj['translation'][0] - (obj['scale'][0]/2), obj['translation'][0] + (obj['scale'][0]/2)]
+    yPair = [obj['translation'][1] - (obj['scale'][1]/2), obj['translation'][1] + (obj['scale'][1]/2)]
+    zPair = [obj['translation'][2] - (obj['scale'][2]/2), obj['translation'][2] + (obj['scale'][2]/2)]
+
+    xBool = x < xPair[1] and x > xPair[0] 
+    yBool = y < yPair[1] and y > yPair[0]
+    zBool = z < zPair[1] and z > zPair[0]
+
+    return (xBool and yBool and zBool)
+
+def totalVolume(obj_list):
+    totalVol = 0
+    for obj in obj_list:
+        xScale = obj['scale'][0]
+        yScale = obj['scale'][1]
+        zScale = obj['scale'][2]
+        vol = xScale * yScale * zScale
+        totalVol = totalVol + vol
+    return totalVol
+
+def pointsInBox(cluster, obj_list):
+    numPoints = len(cluster[0])
+    pointsIn = 0
+    for i in range(0, numPoints):
+        x = cluster[0][i]
+        y = cluster[1][i]
+        z = cluster[2][i]
+        isIn = False
+
+        for obj in obj_list:
+            isIn = isPointInBox(x, y, z, obj)
+            if isIn:
+                break
+        if isIn:
+            pointsIn = pointsIn + 1
+    return (pointsIn / numPoints) * 100
+
+def pointsOutOfBox(cluster, obj_list):
+    numPoints = len(cluster[0])
+    pointsIn = 0
+    outPointX = []
+    outPointY = []
+    outPointZ = []
+    for i in range(0, numPoints):
+        x = cluster[0][i]
+        y = cluster[1][i]
+        z = cluster[2][i]
+        isIn = False
+
+        for obj in obj_list:
+            isIn = isPointInBox(x, y, z, obj)
+            if isIn:
+                break
+        if not isIn:
+            outPointX.append(x)
+            outPointY.append(y)
+            outPointZ.append(z)
+    return [outPointX, outPointY, outPointZ]
 
 
+def objectViz(cluster, obj_list):
+    fig = plt.figure(figsize=(4,4))
+    ax = fig.add_subplot(111, projection = '3d')
+
+    pointList = pointsOutOfBox(cluster, obj_list)
+
+
+    xS = pointList[0]
+    yS = pointList[1]
+    zS = pointList[2]
+    ax.scatter(xS, yS, zS, marker = 'x', alpha = 0.1, color = 'red')
+
+    colors = ['blue', 'green', 'yellow', 'purple', 'orange']
+    for obj in obj_list:
+        shape = obj['type']
+        color = random.choice(colors)
+
+        if shape == 'cuboid':
+            xPair = [obj['translation'][0] - (obj['scale'][0]/2), obj['translation'][0] + (obj['scale'][0]/2)]
+            yPair = [obj['translation'][1] - (obj['scale'][1]/2), obj['translation'][1] + (obj['scale'][1]/2)]
+            zPair = [obj['translation'][2] - (obj['scale'][2]/2), obj['translation'][2] + (obj['scale'][2]/2)]
+
+            #Draw cube
+            for s, e in combinations(np.array(list(product(xPair, yPair, zPair))), 2):
+                if np.sum(np.abs(s-e)) == xPair[1]-xPair[0]:
+                    ax.plot3D(*zip(s, e), color=color)
+                if np.sum(np.abs(s-e)) == yPair[1]-yPair[0]:
+                    ax.plot3D(*zip(s, e), color=color)
+                if np.sum(np.abs(s-e)) == zPair[1]-zPair[0]:
+                    ax.plot3D(*zip(s, e), color=color)
+    plt.show()
+
+#Needs -> minX, maxX, minY, maxY, minZ, maxZ
 
 def fullBoxViz(cluster, numCluster = 20):
     #Given the entire point cloud, show how it is all boxed up
@@ -197,7 +289,7 @@ def fullBoxViz(cluster, numCluster = 20):
         xS = currCluster[0]
         yS = currCluster[1]
         zS = currCluster[2]
-        ax.scatter(xS, yS, zS, marker = 'x', alpha = 0.2)
+        ax.scatter(xS, yS, zS, marker = 'x', alpha = 0.3)
     #print(totalVol, numCluster)
     ax.set_title("Cube")
     plt.show()

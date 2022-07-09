@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 import os
 import numpy as np
-from sklearn.cluster import KMeans, MiniBatchKMeans
+from sklearn.cluster import KMeans, MiniBatchKMeans, DBSCAN
 import math
-
+from statistics import mean
 import clusterViz as clusViz
 
 #TODO Remove when submitting final project
@@ -117,11 +117,13 @@ def pcd2cluster(fileName):
         
     return cluster
 
-def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
+def cluster2obj(cluster, pVal = 3, makeCubes = True):
     #clusViz.boxViz(cluster)
     #clusViz.cubeVsSphereViz(cluster)
+    minPercentile = pVal
+    maxPercentile = 100 - pVal
     roundingFactor = 5
-    makeCubes = True
+
     xS = cluster[0]
     yS = cluster[1]
     zS = cluster[2]
@@ -155,18 +157,25 @@ def cluster2obj(cluster, minPercentile = 10, maxPercentile = 90):
                 'rotation' : [0.0, 0.0, 0.0], 'translation' : [xTrans , yTrans, zTrans]}
         return sphere
 
-def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1, method = 0, batch_size = 0):
+#def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 90, branchLevel = 1, method = 0, batch_size = 0):
+def cluster2objKMeans(cluster, pVal = 3, params = None):
+    if params is None:
+        params = [{
+            'type' : 'kmeans', 
+            'cluster_split' : 12, 
+            'init_method' : 'kmeans++'
+        }]
+
     #clusViz.fullBoxViz(cluster)
     kClustersOld = [cluster]
     kClusters = []
     objList = []
     
-    while branchLevel > 0:
+    for param in params:
         while len(kClustersOld) > 0:
             currCluster = kClustersOld.pop()
-            newClusters = kMeansClustering(currCluster, numCluster, method = method, batch_size= batch_size)
+            newClusters = kMeansClustering(currCluster, param = param)
             kClusters += newClusters
-        branchLevel = branchLevel - 1
         kClustersOld = kClusters
         kClusters = []
     
@@ -174,31 +183,63 @@ def cluster2objKMeans(cluster, numCluster, minPercentile = 10, maxPercentile = 9
 
 
     for i in range(0, len(kClusters)):
-        objList.append(cluster2obj(kClusters[i], minPercentile, maxPercentile))
+        objList.append(cluster2obj(kClusters[i], pVal = pVal))
 
     return objList
     
-def kMeansClustering(cluster, numCluster, method = 0, batch_size = 0):
-    X = np.column_stack((cluster[0], cluster[1], cluster[2]))
-
-    #Could use metrics such as wcss, sihouette, or volume minimize
-    kmeans = None
-    if method == 0:
-        kmeans = KMeans(n_clusters = numCluster).fit(X)
-    elif method == 1:
-        kmeans = MiniBatchKMeans(n_clusters=numCluster, batch_size=batch_size).fit(X)
-    elif method == 2:
-        #kmeans = BisectingKMeans(n_clusters=numCluster)
+def kMeansClustering(cluster, param = None):
+    if param is None:
+        param = {
+            'type' : 'kmeans', 
+            'cluster_split' : 12, 
+            'init_method' : 'kmeans++'
+        }
+    method = param['type']
     
-    kClusters = []
+    try:
+        X = np.column_stack((cluster[0], cluster[1], cluster[2]))
+        #Minimum cluster size is 20 points
+        if (len(cluster[0]) < 20):
+            return cluster
+        #Could use metrics such as wcss, sihouette, or volume minimize
+        kmeans = None
+        numClusters = 0
+        if method == 'kmeans':
+            numClusters = param['cluster_split']
+            kmeans = KMeans(
+                n_clusters = param['cluster_split'], 
+                init = param['init_method']
+            ).fit(X)
+        elif method == 'mini':
+            numClusters = param['cluster_split']
+            kmeans = MiniBatchKMeans(
+                init = param['init_method'],
+                n_clusters= param['cluster_split'],
+                batch_size= param['batch_size'],
+                max_no_improvement= param['max_num_improvement'],
+                max_iter = param['max_iter']
+            ).fit(X)       
+        elif method == 'dbscan':
+            kmeans = DBSCAN(
+                eps = param['eps'],
+                min_samples = param['min_samples'],
+                leaf_size = param['leaf_size'],
+                n_jobs = param['n_jobs']
+            ).fit(X)
+            labels = kmeans.labels_
+            numClusters = len(set(labels)) - (1 if -1 in labels else 0)
+        
+        kClusters = []
 
-    for i in range(0, numCluster):
-        kClusters.append([[],[],[]])
-    for i in range(0, len(kmeans.labels_)):
-        kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
-        kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
-        kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
-    return kClusters
+        for i in range(0, numClusters):
+            kClusters.append([[],[],[]])
+        for i in range(0, len(kmeans.labels_)):
+            kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
+            kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
+            kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
+        return kClusters
+    except:
+        return cluster
 
 def addCluster(fullCluster, cluster):
 
@@ -243,34 +284,36 @@ if __name__ == "__main__":
     
 
     #Filter parameters
-    min_percentile = 3
-    max_percentile = 97
+    p_val = 1
     point_cloud_radius = 1.0
 
-    #The total number of clusters is clusterSplit**branchLevel 
-    #KMeans parameters
-    run_standard = False
-    cluster_split = 12
-    branch_level = 2
-    total_clusters = cluster_split ** branch_level
-
-    #Can either be kmeans++ or random
-    init_method = 'kmeans++'
-
-    #Mini-batch Parameters
-    #TODO study and implement mini_batch, online mini_batching, and bisecting kmeans
-    run_mini_batch = True
-    num_cores = 8
-    #Batch size is ideally at least greater than 256 * number of cores on your machine
-    batch_size = 256 * num_cores
-    #Control early stopping based on number of iterations that inertia does not improve
-    #TODO explore how this impacts run time
-    max_num_improvement = 10
-
-    #Bisecting K-means parameters
-    #Number of iterations at each bisection
-    run_bisection = False
-    max_iter = 300
+    #Clustering params
+    kmeans_param = {
+        'type' : 'kmeans',
+        'cluster_split' : 10,
+        'init_method' : 'k-means++'
+    }
+    orig_param = {
+        'type' : 'kmeans',
+        'cluster_split' : 150,
+        'init_method' : 'k-means++'
+    }
+    mini_kmeans_param = {
+        'type' : 'mini',
+        'init_method' : 'k-means++',
+        'cluster_split' : 10,
+        'batch_size' : (256*8),
+        'max_num_improvement' : 10,
+        'max_iter' : 100
+    }
+    dbscan_param = {
+        'type' : 'dbscan',
+        'eps' : 0.05,
+        'min_samples' : 15,
+        #Leaf size must be at least 1
+        'leaf_size' : 30,
+        'n_jobs' : -1
+    }
 
     #Keep track of runtime
     writeTic = time.perf_counter()
@@ -291,19 +334,62 @@ if __name__ == "__main__":
     mega_cluster = range_filter(mega_cluster, point_cloud_radius)
     print("Size of the cluster after range filtering: ", len(mega_cluster[0]))
 
-    ##KMeans object extraction
-    kmeans_method = 0
-    if run_standard:
-        kmeans_method = 0
-        n_clusters = cluster_split
-    elif run_mini_batch:
-        kmeans_method = 1
-        n_clusters = cluster_split ** branch_level
-        branch_level = 1
-    elif run_bisection:
-        kmeans_method = 2
+    #Clustering
+    k = kmeans_param
+    m = mini_kmeans_param
+    d = dbscan_param 
+    o = orig_param
+    
+    listOfParamLists = [
+        [o],
+        [k],
+        [m],
+        [d],
+        [k, k],
+        [k, m],
+        [k, d],
+        [m, m],
+        [m, d],
+        [m, k],
+        [d, m],
+        [d, d],
+        [d, k]
+    ]
+    obj_list = None
 
-    obj_list = cluster2objKMeans(mega_cluster, numCluster=n_clusters, minPercentile=min_percentile, maxPercentile=max_percentile, branchLevel=branch_level, method = kmeans_method, batch_size=batch_size)
+    volEfficiencies = []
+    timeEfficiencies = []
+    for param_list in listOfParamLists:
+        loops = 1
+        clusterTic = time.perf_counter()
+        for i in range(0, loops):
+            obj_list = cluster2objKMeans(mega_cluster, pVal = p_val, params = param_list)
+        clusterToc = time.perf_counter()
+        print(f"Clustered objects in {((clusterToc- clusterTic) / loops):0.4f} seconds")
+        percentInBox = clusViz.pointsInBox(mega_cluster, obj_list)
+        totalVol = clusViz.totalVolume(obj_list)
+        efficiency = (totalVol / percentInBox) * 1000
+        volEfficiencies.append(efficiency)
+        timeEfficiency = (((clusterToc- clusterTic) / loops) / percentInBox) * 1000
+        timeEfficiencies.append(timeEfficiency)
+        print(percentInBox, totalVol, efficiency, timeEfficiency)
+        for param in param_list:
+            print(param['type'])
+
+    volAvg = mean(volEfficiencies)
+    timeAvg = mean(timeEfficiencies)
+    trueEfficiencies = []
+    for i in range(0, len(volEfficiencies)):
+        trueEfficiency = ((volEfficiencies[i] / volAvg) * 0.75) + ((timeEfficiencies[i] / timeAvg) * 0.25)
+        trueEfficiencies.append(trueEfficiency)
+    print(trueEfficiencies)
+
+    print(listOfParamLists[trueEfficiencies.index(min(trueEfficiencies))])
+    print(listOfParamLists[volEfficiencies.index(min(volEfficiencies))])
+    print(listOfParamLists[timeEfficiencies.index(min(timeEfficiencies))])
+
+    #Visualize objects
+    #clusViz.objectViz(mega_cluster, obj_list)
 
     ##Write objects to settings file
     objWriter(obj_list, settingsFileName = cik_setting_name)
@@ -311,3 +397,4 @@ if __name__ == "__main__":
     #Calculate total runtime
     writeToc = time.perf_counter()
     print(f"Extracted the objects to CIK in {writeToc - writeTic:0.4f} seconds")
+    
