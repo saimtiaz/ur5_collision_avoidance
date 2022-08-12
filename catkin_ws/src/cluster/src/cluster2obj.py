@@ -192,54 +192,56 @@ def kMeansClustering(cluster, param = None):
         param = {
             'type' : 'kmeans', 
             'cluster_split' : 12, 
-            'init_method' : 'kmeans++'
+            'init_method' : 'k-means++'
         }
+
     method = param['type']
     
-    try:
-        X = np.column_stack((cluster[0], cluster[1], cluster[2]))
-        #Minimum cluster size is 20 points
-        if (len(cluster[0]) < 20):
-            return cluster
-        #Could use metrics such as wcss, sihouette, or volume minimize
-        kmeans = None
-        numClusters = 0
-        if method == 'kmeans':
-            numClusters = param['cluster_split']
-            kmeans = KMeans(
-                n_clusters = param['cluster_split'], 
-                init = param['init_method']
-            ).fit(X)
-        elif method == 'mini':
-            numClusters = param['cluster_split']
-            kmeans = MiniBatchKMeans(
-                init = param['init_method'],
-                n_clusters= param['cluster_split'],
-                batch_size= param['batch_size'],
-                max_no_improvement= param['max_num_improvement'],
-                max_iter = param['max_iter']
-            ).fit(X)       
-        elif method == 'dbscan':
-            kmeans = DBSCAN(
-                eps = param['eps'],
-                min_samples = param['min_samples'],
-                leaf_size = param['leaf_size'],
-                n_jobs = param['n_jobs']
-            ).fit(X)
-            labels = kmeans.labels_
-            numClusters = len(set(labels)) - (1 if -1 in labels else 0)
-        
-        kClusters = []
 
-        for i in range(0, numClusters):
-            kClusters.append([[],[],[]])
-        for i in range(0, len(kmeans.labels_)):
-            kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
-            kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
-            kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
-        return kClusters
-    except:
+    X = np.column_stack((cluster[0], cluster[1], cluster[2]))
+    #Minimum cluster size is 20 points
+
+    if (len(cluster[0]) < 20):
         return cluster
+    #Could use metrics such as wcss, sihouette, or volume minimize
+    kmeans = None
+    numClusters = 0
+    if method == 'kmeans':
+        numClusters = param['cluster_split']
+        kmeans = KMeans(
+            n_clusters = param['cluster_split'], 
+            init = param['init_method']
+        ).fit(X)
+
+    elif method == 'mini':
+        numClusters = param['cluster_split']
+        kmeans = MiniBatchKMeans(
+            init = param['init_method'],
+            n_clusters= param['cluster_split'],
+            batch_size= param['batch_size'],
+            max_no_improvement= param['max_num_improvement'],
+            max_iter = param['max_iter']
+        ).fit(X)       
+    elif method == 'dbscan':
+        kmeans = DBSCAN(
+            eps = param['eps'],
+            min_samples = param['min_samples'],
+            leaf_size = param['leaf_size'],
+            n_jobs = param['n_jobs']
+        ).fit(X)
+        labels = kmeans.labels_
+        numClusters = len(set(labels)) - (1 if -1 in labels else 0)
+    
+    kClusters = []
+
+    for i in range(0, numClusters):
+        kClusters.append([[],[],[]])
+    for i in range(0, len(kmeans.labels_)):
+        kClusters[kmeans.labels_[i]][0].append(cluster[0][i])
+        kClusters[kmeans.labels_[i]][1].append(cluster[1][i])
+        kClusters[kmeans.labels_[i]][2].append(cluster[2][i])
+    return kClusters
+
 
 def addCluster(fullCluster, cluster):
 
