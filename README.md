@@ -5,10 +5,22 @@
 End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a RealSense D435 Camera to detect and avoid obstacles. This project includes everything from calibration, point cloud processing, object detection, UR5 movement, and collision avoidance.
 
 ### Use Case
+This package can be used for the following:
+1. Calibrate a RealSense camera to the UR5 when attached to the end-effector
+2. Create a point cloud scan of a working environment given a list of scan positions
+3. Extract collision objects for use by CollisionIK using multi-level clustering techniques:
+    1. K-Means
+    2. Mini-Batch K-Means
+    3. DBSCAN
+    4. Any combination of the following above
+4. Combine all of the above to enable the UR5 to avoid obstacles during real-time teleoperation for any working environment and teleoperation use case
+5. Collision avoidance is meant for static obstacles only currently, but future work may enable dynamic collision avoidance as well.
 
 ### Demo
 
+
 ### Paper
+The link to the project report will be linked here when approved: LINKHERE
 
 ## Installation Instructions
 
@@ -16,7 +28,6 @@ End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a R
 
 ### UR5 IP Address
 
-TODO: Make this information more clear by actually checking this on the robot
 The UR5 IP Address can be obtained by starting up the UR5 from the control panel and navigating to the about information
 
 ### Turning on the camera
@@ -68,22 +79,63 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 
 1. Navigate to catkin_ws/src/pclTransform/launch/cloudTransform.launch
 1. Locate the node named "calibrationTransform"
-1. Replace the first 7 numerical arguments witht he 7-element matrix in the following order:
+1. Replace the first 7 numerical arguments with the 7-element matrix in the following order:
 	1. x y z qx qy qz qw
 
 ## Point Cloud Scan
-1. IN DEVELOPMENT
+This step creates a point cloud scan based on the calibration from the prior step and a list of scan positions.
+This step will result in a collection of point cloud files, which will then need to be placed into a folder and properly pointed to by cluster2obj.py in the cluster package.
+
+1. Navigate and source to ur5_ws:
+    1. Launch the ur5 robot driver:
+        ```bash
+	    roslaunch ur_robot_driver ur5_bringup.launch robot_ip:=<robot_ip>
+        ```
+    1. Launch the realsense camera:
+        ```bash
+        roslaunch realsense2_camera rs_rgbd.launch
+        ```
+2. Navigate and source to catkin_ws
+3. Navigate to the mover package:
+    1. Modify the "POSITIONS" variable in scanMover.py to the desired scanning positions
+    2. Modify the "HOST" and "PORT" variable to match up with the UR5 configuration
+    3. Launch the "scanMover.py" script:
+        ```bash
+	    rosrun mover scanMover.py
+        ```
+4. Navigate to the pclTransform package:
+    1. Launch the point cloud transform:
+        ```bash
+	    roslaunch pclTransform cloudTransform.launch
+        ```
+5. Launch the pcdCreate package:
+    ```bash
+        rosrun pcdCreate pcdCreator
+    ```
+    (NOTE: The pcdCreator.cpp file setLeafSize hyperparameter is useful to modify depending on the fidelity needed for the point cloud.)
+6. Return back to the scanMover terminal window. The provided keyboard controller has the following commands:
+```bash
+    c - Close the point cloud scan
+    n - Move to the next point cloud scan position
+    p - Capture the next point cloud scan frame
+```
+(Please wait a short amount of time between moving to the next position and capturing a scan to allow for accurate point cloud scanning.)
 
 ## Point Cloud Cluster Extraction
-This section will utilize Euclidean clustering to decompose the point cloud into clusters and planar objects
-This is optional as k-means clustering should be sufficient
-Please note this instruction set is incomplete as there are some additional steps to get the euclidean clusters working with the next section.
+This section will utilize Euclidean clustering to decompose the point cloud into clusters and planar objects.
+
+This is optional as k-means clustering should be sufficient, and because euclidean clustering is already included in the cluster package in the following step.
+
+This code is incomplete as it can only process one point cloud file at a time and not the entire scan.
+
 
 1. Navigate and source to catkin_ws:
+    1. Modify "capture1.pcd" to the correct point cloud target file
     1. Launch the euclidean cluster extraction script:
         ```bash
         rosrun cluster cluster_extraction
         ```
+1. This will create a point cloud file for each extracted cluster. Move these files into a folder and remember to have the cluster2obj.py file point to this folder. 
 
 ## Cluster to Collision Object Extraction
 This section will convert point cloud data into collision objects that are usable by CollisionIK
@@ -91,10 +143,24 @@ This code will automatically populate CollisionIK with the collision objects usi
 
 
 1. Navigate and source to catkin_ws:
-	1. Launch the cluster to collision object script:
-        ```bash
-    	rosrun cluster cluster2obj.py
-        ```
+2. Move all the point cloud scan files into a folder.
+3. Open the cluster/cluster2obj.py script:
+	1. Modify the 'is_windows' parameter to true or false based on operating system.
+	2. Modify the 'point_cloud_radius' parameter based on the desired size of the operating environment. The UR5 has an operating length of 0.85 meters
+	3. Modify the 'p_val' parameter based on the desired percent of the point cloud data to be excluded. 
+	4. Modify the "_param" variables to the desired hyperparameters.
+	5. Modify the "listOfParamLists" to the different combinations of clustering desired. 
+	
+	For example:
+	
+	listOfParamLists = [d, m] 
+	
+	This will first run DBSCAN on the point cloud, and then Mini-Batch K-means clustering on each of the DBSCAN extracted clusters.
+	
+4. Launch the cluster to collision object script:
+```bash
+    rosrun cluster cluster2obj.py
+```
     
 ## Robot Movement with CollisionIK
 
@@ -156,9 +222,13 @@ This code will automatically populate CollisionIK with the collision objects usi
 ```
 
 ## Existing Issues
-1. Point Cloud Scan instructions are forthcoming
-1. Point Cloud Cluster Extraction instructions are incomplete
 1. The file directory system where point clouds are stored needs to be cleaned
+2. A lot of the steps are not currently interconnected so there is a lot of manual file transfering involved
+3. The ROS topics may not line up due to issues of getting the camera to work 
 
 ## Future Directions
+1. Hyperparameter Exploration: Explore how different choices of hyperparameters and clustering combinations affect object extraction performance and runtime speed for different environments. Most of the hyperparameter exploration was only done on one situation, a cluttered lab table next to a wall.
+2. Mesh filtering: Extending to dynamic obstacles may be possible by having an initilization step create a mesh filter around static obstacles and then detect dynamic obstacles outside of the mesh filter.
+3. Oriented Bounding Boxes (OBBs): OBBs could be used instead of axis-aligned bounding boxes (AABBs) to produce a tighter fit around objects and produce a speedup on dynamic obstacles due to rotational invariance.
+4. Occupancy Gridding: Occupancy grids with ray casting techniques would provide high surface fidelity as well as potentially update fast enough for real-time use. However, work needs to be done to explore how CollisionIK can be integrated with an occupancy grid.
 
