@@ -210,9 +210,13 @@ This code will automatically populate CollisionIK with the collision objects usi
 ```
 
 ## Existing Issues
-1. Point Cloud Scan instructions are forthcoming
-1. Point Cloud Cluster Extraction instructions are incomplete
 1. The file directory system where point clouds are stored needs to be cleaned
+2. A lot of the steps are not currently interconnected so there is a lot of manual file transfering involved
+3. The ROS topics may not line up due to issues of getting the camera to work 
 
 ## Future Directions
+1. Hyperparameter Exploration: Explore how different choices of hyperparameters and clustering combinations affect object extraction performance and runtime speed for different environments. Most of the hyperparameter exploration was only done on one situation, a cluttered lab table next to a wall.
+2. Mesh filtering: Extending to dynamic obstacles may be possible by having an initilization step create a mesh filter around static obstacles and then detect dynamic obstacles outside of the mesh filter.
+3. Oriented Bounding Boxes (OBBs): OBBs could be used instead of axis-aligned bounding boxes (AABBs) to produce a tighter fit around objects and produce a speedup on dynamic obstacles due to rotational invariance.
+4. Occupancy Gridding: Occupancy grids with ray casting techniques would provide high surface fidelity as well as potentially update fast enough for real-time use. However, work needs to be done to explore how CollisionIK can be integrated with an occupancy grid.
 
