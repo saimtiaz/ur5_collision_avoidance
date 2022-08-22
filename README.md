@@ -38,13 +38,25 @@ The axis-aligned bounding boxes created from the clusters from DBSCAN and Mini-B
 The axis-aligned bounding boxes created from using K-Means with a k of 99, resulting in the same number of bounding boxes. It creates a tighter fit of the environment but is significantly slower.
 
 
-
-
-
 ### Paper
 The link to the project report will be linked here when approved: LINKHERE
 
 ## Installation Instructions
+1. Requirements
+    1. Ubuntu 18.04
+    2. ROS Melodic Morenia
+2. General Installation
+    1. Git clone the package
+3. CollisionIK
+    1. Follow the instructions at https://github.com/uwgraphics/relaxed_ik_ros1
+4. UR Robot Driver
+    1. Follow the instructions at https://github.com/UniversalRobots/Universal_Robots_ROS_Driver
+5. Calibration
+    1. Install RealSense: https://github.com/IntelRealSense/realsense-ros
+    2. Install MoveIt! for Ubuntu 18 : https://moveit.ros.org/install/
+    3. Install the calibration software: https://github.com/portgasray/ur5_realsense_calibration
+
+(Please note these instructions need to be tested but this should cover most of what is needed)
 
 ## General Tasks
 
