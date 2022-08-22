@@ -16,7 +16,6 @@ End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a R
 
 ### UR5 IP Address
 
-TODO: Make this information more clear by actually checking this on the robot
 The UR5 IP Address can be obtained by starting up the UR5 from the control panel and navigating to the about information
 
 ### Turning on the camera
@@ -68,22 +67,38 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 
 1. Navigate to catkin_ws/src/pclTransform/launch/cloudTransform.launch
 1. Locate the node named "calibrationTransform"
-1. Replace the first 7 numerical arguments witht he 7-element matrix in the following order:
+1. Replace the first 7 numerical arguments with the 7-element matrix in the following order:
 	1. x y z qx qy qz qw
 
 ## Point Cloud Scan
-1. IN DEVELOPMENT
+This step creates a point cloud scan based on the calibration from the prior step and a list of scan positions.
+This step will result in a collection of point cloud files, which will then need to be placed into a folder and properly pointed to by cluster2obj.py in the cluster package.
+
+1. Navigate and source to catkin_ws
+1. Navigate to the mover package:
+    1. Modify the "POSITIONS" variable in scanMover.py to the desired scanning positions
+    2. Modify the "HOST" and "PORT" variable to match up with the UR5 configuration
+    3. Launch the "scanMover.py" script:
+        ```bash
+	    rosrun mover scanMover.py
+        ```
+1.
 
 ## Point Cloud Cluster Extraction
-This section will utilize Euclidean clustering to decompose the point cloud into clusters and planar objects
-This is optional as k-means clustering should be sufficient
-Please note this instruction set is incomplete as there are some additional steps to get the euclidean clusters working with the next section.
+This section will utilize Euclidean clustering to decompose the point cloud into clusters and planar objects.
+
+This is optional as k-means clustering should be sufficient, and because euclidean clustering is already included in the cluster package in the following step.
+
+This code is incomplete as it can only process one point cloud file at a time and not the entire scan.
+
 
 1. Navigate and source to catkin_ws:
+    1. Modify "capture1.pcd" to the correct point cloud target file
     1. Launch the euclidean cluster extraction script:
         ```bash
         rosrun cluster cluster_extraction
         ```
+1. This will create a point cloud file for each extracted cluster. Move these files into a folder and remember to have the cluster2obj.py file point to this folder. 
 
 ## Cluster to Collision Object Extraction
 This section will convert point cloud data into collision objects that are usable by CollisionIK
