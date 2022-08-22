@@ -74,15 +74,40 @@ The UR5 IP Address can be obtained by starting up the UR5 from the control panel
 This step creates a point cloud scan based on the calibration from the prior step and a list of scan positions.
 This step will result in a collection of point cloud files, which will then need to be placed into a folder and properly pointed to by cluster2obj.py in the cluster package.
 
-1. Navigate and source to catkin_ws
-1. Navigate to the mover package:
+1. Navigate and source to ur5_ws:
+    1. Launch the ur5 robot driver:
+        ```bash
+	    roslaunch ur_robot_driver ur5_bringup.launch robot_ip:=<robot_ip>
+        ```
+    1. Launch the realsense camera:
+        ```bash
+        roslaunch realsense2_camera rs_rgbd.launch
+        ```
+2. Navigate and source to catkin_ws
+3. Navigate to the mover package:
     1. Modify the "POSITIONS" variable in scanMover.py to the desired scanning positions
     2. Modify the "HOST" and "PORT" variable to match up with the UR5 configuration
     3. Launch the "scanMover.py" script:
         ```bash
 	    rosrun mover scanMover.py
         ```
-1.
+4. Navigate to the pclTransform package:
+    1. Launch the point cloud transform:
+        ```bash
+	    roslaunch pclTransform cloudTransform.launch
+        ```
+5. Launch the pcdCreate package:
+    ```bash
+        rosrun pcdCreate pcdCreator
+    ```
+    (NOTE: The pcdCreator.cpp file setLeafSize hyperparameter is useful to modify depending on the fidelity needed for the point cloud.)
+6. Return back to the scanMover terminal window. The provided keyboard controller has the following commands:
+```bash
+    c - Close the point cloud scan
+    n - Move to the next point cloud scan position
+    p - Capture the next point cloud scan frame
+```
+(Please wait a short amount of time between moving to the next position and capturing a scan to allow for accurate point cloud scanning.)
 
 ## Point Cloud Cluster Extraction
 This section will utilize Euclidean clustering to decompose the point cloud into clusters and planar objects.
@@ -106,10 +131,24 @@ This code will automatically populate CollisionIK with the collision objects usi
 
 
 1. Navigate and source to catkin_ws:
-	1. Launch the cluster to collision object script:
-        ```bash
-    	rosrun cluster cluster2obj.py
-        ```
+2. Move all the point cloud scan files into a folder.
+3. Open the cluster/cluster2obj.py script:
+	1. Modify the 'is_windows' parameter to true or false based on operating system.
+	2. Modify the 'point_cloud_radius' parameter based on the desired size of the operating environment. The UR5 has an operating length of 0.85 meters
+	3. Modify the 'p_val' parameter based on the desired percent of the point cloud data to be excluded. 
+	4. Modify the "_param" variables to the desired hyperparameters.
+	5. Modify the "listOfParamLists" to the different combinations of clustering desired. 
+	
+	For example:
+	
+	listOfParamLists = [d, m] 
+	
+	This will first run DBSCAN on the point cloud, and then Mini-Batch K-means clustering on each of the DBSCAN extracted clusters.
+	
+4. Launch the cluster to collision object script:
+```bash
+    rosrun cluster cluster2obj.py
+```
     
 ## Robot Movement with CollisionIK
 
