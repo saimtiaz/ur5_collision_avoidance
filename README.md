@@ -5,10 +5,22 @@
 End-to-end collision avoidance project for the UR5. Utilizes CollisionIK and a RealSense D435 Camera to detect and avoid obstacles. This project includes everything from calibration, point cloud processing, object detection, UR5 movement, and collision avoidance.
 
 ### Use Case
+This package can be used for the following:
+1. Calibrate a RealSense camera to the UR5 when attached to the end-effector
+2. Create a point cloud scan of a working environment given a list of scan positions
+3. Extract collision objects for use by CollisionIK using multi-level clustering techniques:
+    1. K-Means
+    2. Mini-Batch K-Means
+    3. DBSCAN
+    4. Any combination of the following above
+4. Combine all of the above to enable the UR5 to avoid obstacles during real-time teleoperation for any working environment and teleoperation use case
+5. Collision avoidance is meant for static obstacles only currently, but future work may enable dynamic collision avoidance as well.
 
 ### Demo
 
+
 ### Paper
+The link to the project report will be linked here when approved: LINKHERE
 
 ## Installation Instructions
 
