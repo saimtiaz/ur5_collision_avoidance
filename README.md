@@ -17,6 +17,27 @@ This package can be used for the following:
 5. Collision avoidance is meant for static obstacles only currently, but future work may enable dynamic collision avoidance as well.
 
 ### Demo
+![scan](https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Figures/setup/scanPic.jpeg)
+
+Scanning the working environment with the UR5 and RealSense camera
+
+![raw point cloud](https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Figures/pointCloud/pointCloudDBview.png)
+
+The raw point cloud from the scan after voxel grid and range filtering
+
+![alt](https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Figures/miniBatch/minimeans33.png)
+
+The clusters created from using DBSCAN followed by Mini-Batch K-Means Clustering with a k of 33
+
+![DBSCAN + Mini-Batch K-Means k=33](https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Figures/miniBatch/miniBox33.png)
+
+The axis-aligned bounding boxes created from the clusters from DBSCAN and Mini-Batch K-Means
+
+![K-means k=99](https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Figures/kmeans/kbox99.png)
+The axis-aligned bounding boxes created from using K-Means with a k of 99, resulting in the same number of bounding boxes. It creates a tighter fit of the environment but is significantly slower.
+
+
+
 
 
 ### Paper
