@@ -34,6 +34,7 @@ The clusters created from using DBSCAN followed by Mini-Batch K-Means Clustering
 The axis-aligned bounding boxes created from the clusters from DBSCAN and Mini-Batch K-Means
 
 ![K-means k=99](https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Figures/kmeans/kbox99.png)
+
 The axis-aligned bounding boxes created from using K-Means with a k of 99, resulting in the same number of bounding boxes. It creates a tighter fit of the environment but is significantly slower.
 
 
