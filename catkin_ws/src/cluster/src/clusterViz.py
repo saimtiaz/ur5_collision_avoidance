@@ -216,11 +216,16 @@ def objectViz(cluster, obj_list):
 def fullBoxViz(cluster, numCluster = 20):
     #Given the entire point cloud, show how it is all boxed up
     #cubeVsSphereTime(cluster)
-    minPercentile = 3
-    maxPercentile = 97
+    minPercentile = 1
+    maxPercentile = 99
     numCluster = 12
-    branchLevel = 2
+    branchLevel = 1
     isCube = True
+    param = {
+            'type' : 'kmeans', 
+            'cluster_split' : numCluster, 
+            'init_method' : 'k-means++'
+        }
 
     # if numCluster > 4:
     #     fullBoxViz(cluster, numCluster - 1)
@@ -235,7 +240,7 @@ def fullBoxViz(cluster, numCluster = 20):
     while branchLevel > 0:
         while len(kClustersOld) > 0:
             currCluster = kClustersOld.pop()
-            newClusters = clus.kMeansClustering(currCluster, numCluster)
+            newClusters = clus.kMeansClustering(currCluster, param = param)
             kClusters += newClusters
         branchLevel = branchLevel - 1
         kClustersOld = kClusters
@@ -289,6 +294,7 @@ def fullBoxViz(cluster, numCluster = 20):
         xS = currCluster[0]
         yS = currCluster[1]
         zS = currCluster[2]
+
         ax.scatter(xS, yS, zS, marker = 'x', alpha = 0.3)
     #print(totalVol, numCluster)
     ax.set_title("Cube")

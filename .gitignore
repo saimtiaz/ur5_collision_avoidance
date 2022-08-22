@@ -30,3 +30,6 @@ catkin_ws/src/cluster/.vscode/browse.vc.db-shm
 catkin_ws/src/cluster/.vscode/browse.vc.db-wal
 catkin_ws/scene2.zip
 catkin_ws/src/cluster/src/settings.yaml
+catkin_ws/src/cluster/src/outputCombinationExplore.txt
+catkin_ws/src/cluster/src/plotClusterVol.py
+catkin_ws/src/cluster/src/combinationExplore.py
