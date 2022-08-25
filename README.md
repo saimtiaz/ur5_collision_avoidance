@@ -40,6 +40,7 @@ The axis-aligned bounding boxes created from using K-Means with a k of 99, resul
 
 ### Paper
 The report: https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Report/Annotated_Bibliography.pdf
+
 The annotated bibliography: https://github.com/saimtiaz/ur5_collision_avoidance/blob/main/Report/Annotated_Bibliography.pdf
 
 ## Installation Instructions
